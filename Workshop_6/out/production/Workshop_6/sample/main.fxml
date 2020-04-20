@@ -14,12 +14,12 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="btnAgents" contentDisplay="CENTER" layoutX="63.0" layoutY="58.0" mnemonicParsing="false" onAction="#clickedAgents" prefHeight="27.0" prefWidth="75.0" text="Agents">
+                  <Button fx:id="btnAgents" contentDisplay="CENTER" layoutX="63.0" layoutY="25.0" mnemonicParsing="false" onAction="#clickedAgents" prefHeight="27.0" prefWidth="75.0" text="Agents">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btnSuppliers" layoutX="63.0" layoutY="25.0" mnemonicParsing="false" onAction="#clickedSuppliers" prefHeight="27.0" prefWidth="75.0" text="Suppliers">
+                  <Button fx:id="btnSuppliers" layoutX="63.0" layoutY="127.0" mnemonicParsing="false" onAction="#clickedSuppliers" prefHeight="27.0" prefWidth="75.0" text="Suppliers">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -29,7 +29,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="btnBookings" contentDisplay="CENTER" layoutX="63.0" layoutY="127.0" mnemonicParsing="false" onAction="#clickedBookings" prefHeight="27.0" prefWidth="75.0" text="Bookings">
+                  <Button fx:id="btnBookings" contentDisplay="CENTER" layoutX="63.0" layoutY="60.0" mnemonicParsing="false" onAction="#clickedBookings" prefHeight="27.0" prefWidth="75.0" text="Bookings">
                      <padding>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </padding>
@@ -43,7 +43,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
          <children>
-            <Pane prefHeight="150.0" prefWidth="542.0">
+            <Pane prefHeight="100.0" prefWidth="539.0">
                <children>
                   <ImageView fitHeight="100.0" fitWidth="575.0" layoutX="118.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>

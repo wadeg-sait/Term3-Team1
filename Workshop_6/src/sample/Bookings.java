@@ -4,22 +4,25 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
 import sample.BookingInfo.BookingData;
 import sample.BookingInfo.BookingDetail;
 
 import java.io.IOException;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.NumberFormat;
 
 public class Bookings {
 
@@ -37,6 +40,99 @@ public class Bookings {
     @FXML
     private Button btnCancel;
 
+    @FXML
+    private Label lblBookingDate;
+
+    @FXML
+    private Label lblCustomerID;
+
+    @FXML
+    private Label lblError;
+
+    @FXML
+    private Label lblTripStart;
+
+    @FXML
+    private Label lblDestination;
+
+    @FXML
+    private Label lblAgencyComm;
+
+    @FXML
+    private Label lblTravelerCount;
+
+    @FXML
+    private Label lblTripType;
+
+    @FXML
+    private Label lblItinerary;
+
+    @FXML
+    private Label lblTripEnd;
+
+    @FXML
+    private Label lblBasePrice;
+
+    @FXML
+    private Label lblRegionID;
+
+    @FXML
+    private Label lblClassID;
+
+    @FXML
+    private Label lblSupplierID;
+
+    @FXML
+    private Label lblDescription;
+
+    @FXML
+    private Label lblFeeID;
+
+    @FXML
+    private Label lblFuture;
+
+    @FXML
+    private AnchorPane apDetails;
+
+
+    @FXML
+    void contentClicked(MouseEvent event) {
+        String bookingNum;
+        //details = FXCollections.observableArrayList();
+        BookingDetail detail = null;
+        bookingNum = tvBookings.getSelectionModel().getSelectedItem().getBookingNo();
+        detail = BookingData.getBookingDetail(bookingNum);
+        NumberFormat currency = NumberFormat.getCurrencyInstance();
+        DateFormat dateFormat = DateFormat.getDateInstance();
+        try {
+            lblError.setVisible(false);
+            lblBookingDate.textProperty().set(dateFormat.format(detail.getBookingDate()));
+            lblCustomerID.textProperty().set(Integer.toString(detail.getCustomerID()));
+            lblTripStart.textProperty().set(dateFormat.format(detail.getTripStart()));
+            lblDestination.textProperty().set(detail.getDestination());
+            lblAgencyComm.textProperty().set(currency.format(detail.getAgencyCommission()));
+            lblTravelerCount.textProperty().set(Integer.toString(detail.getTravelerCount()));
+            lblTripType.textProperty().set(detail.getTripTypeID());
+            lblItinerary.textProperty().set(Integer.toString(detail.getItineraryNo()));
+            lblTripEnd.textProperty().set(dateFormat.format(detail.getTripEnd()));
+            lblBasePrice.textProperty().set(currency.format(detail.getBasePrice()));
+            lblRegionID.textProperty().set(detail.getRegionID());
+            lblClassID.textProperty().set(detail.getClassID());
+            lblSupplierID.textProperty().set(Integer.toString(detail.getProductSupplierID()));
+            lblDescription.textProperty().set(detail.getDescription());
+            lblFeeID.textProperty().set(detail.getFeeID());
+            apDetails.setVisible(true);
+            lblFuture.setVisible(true);
+        }
+        catch(NullPointerException e){
+            lblError.setVisible(true);
+            lblError.textProperty().set("Error Loading record details: " + e.toString());
+            apDetails.setVisible(false);
+            lblFuture.setVisible(false);
+        }
+
+    }
+
     private ObservableList<BookingDetail> details;
     private Connection conn;
 
@@ -49,25 +145,33 @@ public class Bookings {
     }
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
+        apDetails.setVisible(false);
+        lblFuture.setVisible(false);
+        lblError.setVisible(false);
         details = FXCollections.observableArrayList();
-        //details = BookingData.loadBookings();
-        conn = BookingData.Connect();
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT b.BookingID, b.BookingNo, c.CustFirstName, c.CustLastName " +
-                "FROM Bookings b inner join Customers c on b.customerid = c.customerid");
-
-        while(rs.next()) {
-            details.add(new BookingDetail(Integer.toString( rs.getInt("BookingID")),
-                    rs.getString("BookingNo"),
-                    rs.getString("CustFirstName") + " " + rs.getString("CustLastName")));
-
-        }
+        details = BookingData.loadBookings();
 
         colBookingName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         colBookingID.setCellValueFactory(cellData -> cellData.getValue().bookingIDProperty());
         colBookingNo.setCellValueFactory(cellData -> cellData.getValue().bookingNoProperty());
         tvBookings.setItems(null);
         tvBookings.setItems(details);
+
+//        lblBookingDate.textProperty().set(null);
+//        lblCustomerID.textProperty().set(null);
+//        lblTripStart.textProperty().set(null);
+//        lblDestination.textProperty().set(null);
+//        lblAgencyComm.textProperty().set(null);
+//        lblTravelerCount.textProperty().set(null);
+//        lblTripType.textProperty().set(null);
+//        lblItinerary.textProperty().set(null);
+//        lblTripEnd.textProperty().set(null);
+//        lblBasePrice.textProperty().set(null);
+//        lblRegionID.textProperty().set(null);
+//        lblClassID.textProperty().set(null);
+//        lblSupplierID.textProperty().set(null);
+//        lblDescription.textProperty().set(null);
+//        lblFeeID.textProperty().set(null);
 
 
 
