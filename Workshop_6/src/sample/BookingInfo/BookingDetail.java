@@ -1,4 +1,7 @@
 package sample.BookingInfo;
+/*
+Created by Wade Grimm
+ */
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;

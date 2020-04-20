@@ -1,5 +1,7 @@
 package sample;
-
+/*
+Created by Wade Grimm
+ */
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -98,7 +100,7 @@ public class Bookings {
     @FXML
     void contentClicked(MouseEvent event) {
         String bookingNum;
-        //details = FXCollections.observableArrayList();
+
         BookingDetail detail = null;
         bookingNum = tvBookings.getSelectionModel().getSelectedItem().getBookingNo();
         detail = BookingData.getBookingDetail(bookingNum);
@@ -133,7 +135,7 @@ public class Bookings {
 
     }
 
-    private ObservableList<BookingDetail> details;
+
     private Connection conn;
 
     @FXML
@@ -145,6 +147,7 @@ public class Bookings {
     }
     @FXML
     void initialize() throws SQLException, ClassNotFoundException {
+        ObservableList<BookingDetail> details;
         apDetails.setVisible(false);
         lblFuture.setVisible(false);
         lblError.setVisible(false);
@@ -156,25 +159,6 @@ public class Bookings {
         colBookingNo.setCellValueFactory(cellData -> cellData.getValue().bookingNoProperty());
         tvBookings.setItems(null);
         tvBookings.setItems(details);
-
-//        lblBookingDate.textProperty().set(null);
-//        lblCustomerID.textProperty().set(null);
-//        lblTripStart.textProperty().set(null);
-//        lblDestination.textProperty().set(null);
-//        lblAgencyComm.textProperty().set(null);
-//        lblTravelerCount.textProperty().set(null);
-//        lblTripType.textProperty().set(null);
-//        lblItinerary.textProperty().set(null);
-//        lblTripEnd.textProperty().set(null);
-//        lblBasePrice.textProperty().set(null);
-//        lblRegionID.textProperty().set(null);
-//        lblClassID.textProperty().set(null);
-//        lblSupplierID.textProperty().set(null);
-//        lblDescription.textProperty().set(null);
-//        lblFeeID.textProperty().set(null);
-
-
-
 
     }
 }

@@ -1,4 +1,7 @@
 package sample;
+/*
+Created by Wade Grimm
+ */
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
