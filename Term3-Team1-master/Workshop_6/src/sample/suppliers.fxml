@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="lvSuppliers" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Suppliers">
+   <children>
+      <Button fx:id="btnCancel" layoutX="521.0" layoutY="350.0" mnemonicParsing="false" onAction="#clickedCancel" text="Cancel" />
+      <Label layoutX="14.0" layoutY="14.0" text="Suppliers" />
+      <ListView fx:id="lvSuppliers" layoutX="14.0" layoutY="31.0" onMouseClicked="#lvSuppliersClicked" prefHeight="350.0" prefWidth="286.0" />
+      <TextField fx:id="txtSupplierId" layoutX="424.0" layoutY="31.0" />
+      <TextField fx:id="txtSupplierName" layoutX="424.0" layoutY="82.0" />
+      <Label layoutX="315.0" layoutY="35.0" text="SupplierId" />
+      <Label layoutX="315.0" layoutY="86.0" text="Supplier Name" />
+      <Button fx:id="btnSupplier" layoutX="368.0" layoutY="200.0" mnemonicParsing="false" onAction="#btnSupplierSaveClicked" text="Save" />
+   </children>
+</AnchorPane>
+
