@@ -10,7 +10,7 @@ import java.sql.*;
 public class BookingData {
     public static Connection Connect() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TravelExperts","root","");
+        Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TravelExperts","jdbcusr","jdbc2020");
         return conn;
     }
 
@@ -20,7 +20,7 @@ public class BookingData {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TravelExperts","root","");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TravelExperts","jdbcusr","jdbc2020");
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT b.BookingID, b.BookingNo, c.CustFirstName, c.CustLastName " +
                     "FROM Bookings b inner join Customers c on b.customerid = c.customerid");
@@ -49,7 +49,7 @@ public class BookingData {
         BookingDetail bv = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TravelExperts","root","");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/TravelExperts","jdbcusr","jdbc2020");
             Statement stmt = conn.createStatement();
             String sql = "SELECT b.BookingID, b.BookingDate, b.CustomerId, b.TravelerCount, " +
                     "b.CustomerId, b.TripTypeID ,c.CustFirstName, c.CustLastName, bd.TripStart, bd.TripEnd, bd.Destination, " +
