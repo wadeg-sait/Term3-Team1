@@ -3,13 +3,11 @@ package sample.BookingInfo;
 Created by Wade Grimm
  */
 
-import javafx.beans.property.SimpleIntegerProperty;
+
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+
 
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 
 public class BookingDetail {
 
