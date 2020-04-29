@@ -1,7 +1,6 @@
 package com.team3.TravelExpert;
 
-import java.sql.Date;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -13,6 +12,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import com.google.gson.Gson;
+
+
+
 
 @Path("bookings")
 public class BookingsResources {
@@ -37,22 +41,25 @@ public class BookingsResources {
 		return bookdb.getBooking(id);
 		
 	}
-	
+
 	@POST
 	@Path("addBooking")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Bookings  addBooking(Bookings b)
+	public String  addBooking(String jsonString)
 	
 	{
-		System.out.print("Zoha");
-		System.out.println(b);
+		System.out.print(jsonString);
+		
+		Gson gson = new Gson();
+		Bookings b = gson.fromJson(jsonString, Bookings.class);
+		
 		
 	
 		
 		System.out.println(b);
 		bookdb.addBooking(b);
 		
-		return b;
+		return jsonString;
 		
 		
 	}
@@ -60,8 +67,11 @@ public class BookingsResources {
 	@PUT
 	@Path("updateBooking")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Bookings updateBooking(Bookings ub)
+	public Bookings updateBooking(String jsonString)
+	
 	{
+		Gson gson = new Gson();
+		Bookings ub = gson.fromJson(jsonString, Bookings.class);
 		System.out.println(ub);
 		
 		if(bookdb.getBooking(ub.getBookingId()).getBookingId()==0)
@@ -72,6 +82,7 @@ public class BookingsResources {
 		else {
 			bookdb.updateBooking(ub);
 		}
+		System.out.println(ub);
 		
 		return ub;
 	}

@@ -1,0 +1,66 @@
+2020-04-28 04:58:47,404 [Worker-18] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.team3:TravelExpert:0.0.1-SNAPSHOT @ C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\pom.xml.
+2020-04-28 04:58:47,404 [Worker-0] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.team3:TravelExpert:0.0.1-SNAPSHOT @ C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\pom.xml.
+2020-04-28 04:58:49,528 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 04:58:49,535 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-28 04:58:49,541 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 04:58:49,542 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-28 04:58:50,757 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 04:58:50,762 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-28 04:58:50,765 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 04:58:50,765 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-28 04:58:51,705 [Worker-21] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.team3:TravelExpert:0.0.1-SNAPSHOT @ C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\pom.xml.
+2020-04-28 04:58:54,269 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 04:58:54,272 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-28 04:58:54,275 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 04:58:54,275 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-28 05:01:05,229 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 05:01:05,230 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-28 05:01:05,232 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 05:01:05,232 [Worker-26] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-28 05:04:34,333 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 05:04:34,334 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-28 05:04:34,335 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 05:04:34,336 [Worker-29] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-28 05:06:43,149 [Start Help Server] INFO  org.eclipse.jetty.util.log - Logging initialized @568842ms
+2020-04-28 05:06:43,250 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-9.3.9.v20160517
+2020-04-28 05:06:43,290 [Start Help Server] INFO  o.e.j.server.handler.ContextHandler - Started o.e.j.s.ServletContextHandler@251ec063{/help,null,AVAILABLE}
+2020-04-28 05:06:43,308 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started ServerConnector@e341a11{HTTP/1.1,[http/1.1]}{127.0.0.1:1431}
+2020-04-28 05:06:43,308 [Start Help Server] INFO  org.eclipse.jetty.server.Server - Started @569001ms
+2020-04-28 05:12:56,617 [Stop Help Server] INFO  o.e.jetty.server.AbstractConnector - Stopped ServerConnector@e341a11{HTTP/1.1,[http/1.1]}{127.0.0.1:0}
+2020-04-28 05:12:56,631 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - Stopped o.e.j.s.ServletContextHandler@251ec063{/help,null,UNAVAILABLE}
+2020-04-28 23:38:32,995 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:38:33,002 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-28 23:38:33,004 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:38:33,004 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-28 23:38:34,692 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:38:34,696 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-28 23:38:34,697 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:38:34,698 [Worker-4] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-28 23:40:22,028 [Worker-23] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.team3:TravelExpert:0.0.1-SNAPSHOT @ C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\pom.xml.
+2020-04-28 23:40:22,653 [Worker-23] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.8.5/gson-2.8.5.pom
+2020-04-28 23:40:22,698 [Worker-23] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.8.5/gson-2.8.5.pom
+2020-04-28 23:40:22,744 [Worker-23] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/google/code/gson/gson-parent/2.8.5/gson-parent-2.8.5.pom
+2020-04-28 23:40:22,819 [Worker-23] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/google/code/gson/gson-parent/2.8.5/gson-parent-2.8.5.pom
+2020-04-28 23:40:22,888 [Worker-23] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+2020-04-28 23:40:22,955 [Worker-23] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+2020-04-28 23:40:23,042 [Worker-23] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar
+2020-04-28 23:40:23,212 [Worker-23] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/com/google/code/gson/gson/2.8.5/gson-2.8.5.jar
+2020-04-28 23:40:24,179 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:40:24,181 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-28 23:40:24,182 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:40:24,183 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-28 23:40:24,184 [Worker-23] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of TravelExpert
+2020-04-28 23:40:24,185 [Worker-23] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for TravelExpert
+2020-04-28 23:40:24,188 [Worker-23] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:40:25,856 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:40:25,859 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-28 23:40:25,861 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:40:25,862 [Worker-18] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-28 23:41:02,364 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:41:02,365 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-28 23:41:02,366 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:41:02,367 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-28 23:41:03,454 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:41:03,455 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-28 23:41:03,456 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-28 23:41:03,456 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
