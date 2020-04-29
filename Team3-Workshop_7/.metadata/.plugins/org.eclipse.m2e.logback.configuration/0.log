@@ -64,3 +64,15 @@
 2020-04-28 23:41:03,455 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2020-04-28 23:41:03,456 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2020-04-28 23:41:03,456 [Worker-19] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-29 04:40:48,096 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-29 04:40:48,106 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-29 04:40:48,109 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-29 04:40:48,109 [Worker-1] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-29 04:40:50,637 [Worker-24] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.team3:TravelExpert:0.0.1-SNAPSHOT @ C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\pom.xml.
+2020-04-29 04:40:52,394 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-29 04:40:52,397 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-04-29 04:40:52,398 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-04-29 04:40:52,399 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\TravelExpert\src\test\resources
+2020-04-29 04:40:52,400 [Worker-24] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of TravelExpert
+2020-04-29 04:40:52,401 [Worker-24] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for TravelExpert
+2020-04-29 04:40:52,405 [Worker-24] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
