@@ -1,5 +1,6 @@
 package sample;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
@@ -10,8 +11,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class AgencyController {
 
@@ -817,8 +823,12 @@ public class AgencyController {
 
 
     @FXML
-    void clickedCancel(ActionEvent event) {
+    void clickedCancel(ActionEvent event) throws IOException {
+        Parent stage = FXMLLoader.load(getClass().getResource("main.fxml"));
+        Scene scene = new Scene((stage));
 
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(scene);
     }
 
 

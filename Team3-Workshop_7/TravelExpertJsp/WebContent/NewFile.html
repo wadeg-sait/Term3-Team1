@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="js/travelExpert.js"></script>
+</head>
+<body onload= 'test3()'>
+
+
+</body>
+<script>
+function test(){
+	const firstReq = new XMLHttpRequest();
+
+	firstReq.addEventListener('load', function() {
+		console.log('IT WORKED!!!');
+		
+		const data = JSON.parse(this.responseText);
+		console.log(data);
+		
+	});
+
+	firstReq.addEventListener('error', () => {
+		console.log('ERROR!!!!!!');
+	});
+
+	firstReq.open('GET', 'http://localhost:8080/TravelExpert/webapi/bookings');
+	firstReq.send();
+	console.log('Request Sent!');
+
+}
+
+function test2(){
+	
+	const xhr = new XMLHttpRequest();
+	
+
+
+	const params = { BookingNo: 'abbs' };
+	//const data = JSON.stringify(params);
+	// configure a `POST` request
+	xhr.open('POST', 'http://localhost:8080/TravelExpert/webapi/bookings/addBooking');
+
+	// create a JSON object
+	
+	//console.log(data);
+	// set `Content-Type` header
+		xhr.setRequestHeader('Content-Type', 'application/json');
+	// pass `params` to `send()` method
+	xhr.send(JSON.stringify(params));
+
+	// listen for `load` event
+	xhr.onload = () => {
+		console.log('Test');
+		//console.log(xhr.responseText);
+	}
+}
+
+function test3(){
+	
+	const xhr = new XMLHttpRequest();
+	
+
+
+	const params = { BookingId:1314,
+			BookingNo: 'zoha' };
+	
+	//const data = JSON.stringify(params);
+	// configure a `POST` request
+	xhr.open('PUT', 'http://localhost:8080/TravelExpert/webapi/bookings/updateBooking');
+
+	// create a JSON object
+	
+	//console.log(data);
+	// set `Content-Type` header
+		xhr.setRequestHeader('Content-Type', 'application/json');
+	// pass `params` to `send()` method
+	xhr.send(JSON.stringify(params));
+
+	// listen for `load` event
+	xhr.onload = () => {
+		console.log('Test');
+		//console.log(xhr.responseText);
+	}
+}
+	
+	
+</script>
+
+</html>
