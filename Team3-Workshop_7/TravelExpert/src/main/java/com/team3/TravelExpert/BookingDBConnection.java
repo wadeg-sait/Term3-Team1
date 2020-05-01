@@ -39,7 +39,7 @@ public class BookingDBConnection {
 			 Statement st = con.createStatement();
 			 ResultSet rs = st.executeQuery(sql);
 			 
-			 int i=0;
+		
 			 while(rs.next())
 			 {
 				  Bookings booking= new Bookings();
@@ -225,7 +225,196 @@ public class BookingDBConnection {
 			 }
 		}
 	
+		public List<Customers> getCustomers(){
+			
+			List<Customers> customerslist = new ArrayList<Customers>();
+			String sql = "select * from  customers";
+			 try 
+			 {
+				 Statement st = con.createStatement();
+				 ResultSet rs = st.executeQuery(sql);
+				 
+		
+				 while(rs.next())
+				 {
+					 Customers customer= new Customers();
+					 	
+					 customer.setCustomerId(rs.getInt(1));
+					 customer.setCustFirstName(rs.getString(2));
+					 customer.setCustLastName(rs.getString(3));
+					 customer.setCustAddress(rs.getString(4));
+					 customer.setCustCity(rs.getString(5));
+					 customer.setCustProv(rs.getString(6));
+					 customer.setCustPostal(rs.getString(7));
+					 customer.setCustCountry(rs.getString(8));
+					 customer.setCustHomePhone(rs.getString(9));
+					 customer.setCustBusPhone(rs.getString(10));
+					 customer.setCustEmail(rs.getString(11));
+					 customer.setAgentId(rs.getShort(12));
+					
+					 customerslist.add(customer);
+				 }
+			 }
+			 
+			 catch(Exception e)
+			 {
+				 System.out.println(e);
+				 
+			 }
+			 
+			 return customerslist;
+			
+			
+		}
+		
+		public Customers getCustomer(int id){
+			
+			
+			String sql = "select * from  customers where CustomerId="+id;
+			 Customers customer= new Customers();
+		
+			try 
+			 {
+				 Statement st = con.createStatement();
+				 ResultSet rs = st.executeQuery(sql);
+				 
+				 int i=0;
+				 while(rs.next())
+				 {	
+					 customer.setCustomerId(rs.getInt(1));
+					 customer.setCustFirstName(rs.getString(2));
+					 customer.setCustLastName(rs.getString(3));
+					 customer.setCustAddress(rs.getString(4));
+					 customer.setCustCity(rs.getString(5));
+					 customer.setCustProv(rs.getString(6));
+					 customer.setCustPostal(rs.getString(7));
+					 customer.setCustCountry(rs.getString(8));
+					 customer.setCustHomePhone(rs.getString(9));
+					 customer.setCustBusPhone(rs.getString(10));
+					 customer.setCustEmail(rs.getString(11));
+					 customer.setAgentId(rs.getShort(12));
+					
+				 }
+			 }
+			 
+			 catch(Exception e)
+			 {
+				 System.out.println(e);
+				 
+			 }
+			 
+			 return customer;
+		
+			
+		}
+		
+		public void deleteCustomer(int id)
+		{
+			String sql= "delete from customers where CustomerId=?";
+			try 
+			 {	System.out.println("Im here to delete");
+				 PreparedStatement st = con.prepareStatement(sql);
+			
+
+				 st.setInt(1, id);
+			
+				
+				 st.executeUpdate();
+			 }
+			 
+			 catch(Exception e)
+			 {
+				 System.out.println(e);
+				 
+			 }
+		
+		}
+		
+		public void addCustomer(Customers b)
+		{
+			String sql= "insert into  customers values (?,?,?,?,?,?,?,?,?,?,?,?)";
+			try 
+			 {	System.out.println("Im here");
+				 PreparedStatement st = con.prepareStatement(sql);
+				 
+				 
+				 st.setInt(1, b.getCustomerId());
+				 st.setString(2, b.getCustFirstName());
+				 st.setString(3, b.getCustLastName());
+				 st.setString(4, b.getCustAddress());
+				 st.setString(5, b.getCustCity());
+				 st.setString(6, b.getCustProv());
+				 st.setString(7, b.getCustPostal());
+				 st.setString(8, b.getCustCountry());
+				 st.setString(9, b.getCustHomePhone());
+				 st.setString(10, b.getCustBusPhone());
+				 st.setString(11, b.getCustEmail());
+				 
+				 
+				 if (b.getAgentId()==0)
+				 {
+					 st.setNull(12,Types.INTEGER);
+				 }
+				 else{
+					 st.setInt(12, b.getAgentId());
+				 }
+		
 	
+				 st.executeUpdate();
+			 }
+			 
+			 catch(Exception e)
+			 {
+				 System.out.println(e);
+				 
+			 }
+		}
+		
+		public void updateCustomer(Customers b)
+		{
+			String sql= "update customers set CustFirstName=?, CustLastName=?, CustAddress=?, CustCity=?, CustProv=?, CustPostal=? , CustCountry=?, CustHomePhone=?,CustBusPhone=?, CustEmail=?, AgentId=? where CustomerId=?";
+			try 
+			 {	System.out.println("Im here");
+				 PreparedStatement st = con.prepareStatement(sql);
+				 
+				 
+				
+				 st.setString(1, b.getCustFirstName());
+				 st.setString(2, b.getCustLastName());
+				 st.setString(3, b.getCustAddress());
+				 st.setString(4, b.getCustCity());
+				 st.setString(5, b.getCustProv());
+				 st.setString(6, b.getCustPostal());
+				 st.setString(7, b.getCustCountry());
+				 st.setString(8, b.getCustHomePhone());
+				 st.setString(9, b.getCustBusPhone());
+				 st.setString(10, b.getCustEmail());
+				 
+				 
+				 if (b.getAgentId()==0)
+				 {
+					 st.setNull(11,Types.INTEGER);
+				 }
+				 else{
+					 st.setInt(11, b.getAgentId());
+				 }
+			
+				 st.setInt(12, b.getCustomerId());
+				 
+				 
+				 st.executeUpdate();
+			 }
+			 
+			 catch(Exception e)
+			 {
+				 System.out.println(e);
+				 
+			 }
+		 
+		
+	
+		
+	}
 	
 	
 
