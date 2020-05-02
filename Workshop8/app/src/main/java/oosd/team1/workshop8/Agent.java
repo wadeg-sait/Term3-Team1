@@ -1,3 +1,8 @@
+/*
+ * Workshop 8 base skeleton created by Wade Grimm
+ *
+ * */
+
 package com.wade.day12exercise;
 
 import java.io.Serializable;

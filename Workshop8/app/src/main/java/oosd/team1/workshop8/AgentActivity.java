@@ -1,3 +1,8 @@
+/*
+ * Workshop 8 base skeleton created by Wade Grimm
+ *
+ * */
+
 package oosd.team1.workshop8;
 
 import androidx.appcompat.app.AppCompatActivity;
