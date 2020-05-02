@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Workshop8</string>
+    <string name="addition_content_like_packages_etc">Addition content like Packages,etc</string>
+    <string name="suppliers">Suppliers</string>
+    <string name="customers">Customers</string>
+    <string name="bookings">Bookings</string>
+    <string name="agents">Agents</string>
+    <string name="travelexperts_logo">TravelExperts Logo</string>
+    <string name="tap_agent_name_see_details">Tap Agent name see details</string>
+</resources>
