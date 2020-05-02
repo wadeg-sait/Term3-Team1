@@ -13,6 +13,8 @@ public class AgentRestServiceApplication  extends Application {
 	 
 	public AgentRestServiceApplication() {
 		singletons.add(new AgentRestService());
+		singletons.add(new BookingsRestService());
+		singletons.add(new CustomerRestService());
 	}
  
 	@Override
