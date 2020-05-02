@@ -2,8 +2,9 @@
  * 
  */
 function loadAllAgents() {
+	console.log("in loadAllAgents");
 	var req = new XMLHttpRequest();
-
+	
 	req.onreadystatechange = function() {
 		if (req.readyState == 4 && req.status == 200) {
 			var agentsArray = JSON.parse(req.responseText);
@@ -24,22 +25,33 @@ function loadAllAgents() {
 
 function loadAgent(agentId) {
 	console.log("in loadAgent, agentId=" + agentId);
-	$.get("rs/agent/getagent/" + agentId, function(data){
-			var agent = data;
-			var agentDiv = document.getElementById("agentDiv");
+	//var agentDiv = document.getElementById("agentDiv");
 	
-			agentDiv.innerHTML = "agentId: " + agent.agentId + "<br />"
-					+ "agtFirstName: " + agent.agtFirstName + "<br />"
-					+ "agtMiddleInitial: " + agent.agtMiddleInitial + "<br />"
-					+ "agtLastName: " + agent.agtLastName + "<br />"
-					+ "agtBusPhone: " + agent.agtBusPhone + "<br />"
-					+ "agtEmail: " + agent.agtEmail + "<br />"
-					+ "agtPosition: " + agent.agtPosition + "<br />"
-					+ "agencyId: " + agent.agencyId + "<br />" + "agtUserId: "
-					+ agent.agtUserId + "<br />" + "agtPassword: "
-					+ agent.agtPassword + "<br />"
-		}, "json");
-
+	//agentDiv.innerHTML = "agentId: " + agentId + "<br />"
+	
+	var req = new XMLHttpRequest();
+	req.onreadystatechange = function(){
+		if (req.readyState == 4 && req.status == 200){
+				var agent = JSON.parse(req.responseText);
+				var agentDiv = document.getElementById("agentDiv");
+				
+				agentDiv.innerHTML = "agentId: " + agent.agentId + "<br />"
+				+ "agtFirstName: " + agent.agtFirstName + "<br />"
+				+ "agtMiddleInitial: " + agent.agtMiddleInitial + "<br />"
+				+ "agtLastName: " + agent.agtLastName + "<br />"
+				+ "agtBusPhone: " + agent.agtBusPhone + "<br />"
+				+ "agtEmail: " + agent.agtEmail + "<br />"
+				+ "agtPosition: " + agent.agtPosition + "<br />"
+				+ "agencyId: " + agent.agencyId + "<br />" + "agtUserId: "
+				+ agent.agtUserId + "<br />" + "agtPassword: "
+				+ agent.agtPassword + "<br />"
+				var agentDetails = document.getElementById("agentDetails");
+				agentDetails.style="display:block";
+			}
+	}
+	
+req.open("GET","http://localhost:8080/Workshop7-1/rs/agent/getagent/"+ agentId)
+req.send();
 
 }
 
