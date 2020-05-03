@@ -34,7 +34,7 @@ import model.Booking;
 public class BookingsRestService {
 	
 	BookingDBConnection bookdb= new BookingDBConnection();
-	
+	EntityManagerFactory factory =Persistence.createEntityManagerFactory("Workshop7");
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -51,43 +51,24 @@ public class BookingsRestService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Bookings getBooking(@PathParam("id") int id)
 	{
-		return bookdb.getBooking(id);
-		
-	}
-
-	@GET
-	@Path("/get")
-    @Produces(MediaType.TEXT_PLAIN)
-	public String getSomething(@QueryParam("request") String request ,
-			 @DefaultValue("1") @QueryParam("version") int version) {
-
-        return "test123";	
+		return bookdb.getBooking(id);	
 	}
 	
-
-
+	
 	@POST
 	@Path("/postBooking")
     @Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String postSomething(String jsonString) {
 		
-	
-		EntityManagerFactory factory =
-		Persistence.createEntityManagerFactory("Workshop7");
-		EntityManager em =
-		 factory.createEntityManager();
-		
-
+		EntityManager em = factory.createEntityManager();
 		Gson gson = new Gson();
 		Booking booking = gson.fromJson(jsonString, Booking.class);
-		
-		System.out.println(booking);
-	
 		em.getTransaction().begin(); 
 		Booking newBooking = em.merge(booking);
-		em.getTransaction().commit(); em.close(); factory.close();
-		 
+		em.getTransaction().commit(); 
+		em.close(); 
+	 
         return "Booking has been posted";	
 	}
 
@@ -96,29 +77,19 @@ public class BookingsRestService {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String updateBooking(String jsonString)
-		
-	
-	{
-		
-		  EntityManagerFactory factory =
-		  Persistence.createEntityManagerFactory("Workshop7"); EntityManager em =
-		  factory.createEntityManager();
-		 
-
+	{  
+		EntityManager em = factory.createEntityManager();
 		Gson gson = new Gson();
 		//Type type = new TypeToken<Agent>() {}.getType();
 		Booking booking = gson.fromJson(jsonString, Booking.class);
-		 
-		System.out.println(booking.getBookingNo());
-		
-		  em.getTransaction().begin(); em.persist(booking);
-		  em.getTransaction().commit(); em.close(); factory.close();
-		 
-
-			 
+		  em.getTransaction().begin();
+		  em.merge(booking);
+		  em.getTransaction().commit(); 
+		  em.close();	 
 		return "Booking has been Updated";
 	}
 
+	
 	@DELETE 
 	@Path("deleteBooking/{id}")
 	public String deleteBooking(@PathParam("id") int id)

@@ -95,8 +95,7 @@ public class AgentRestService {
     @Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String putAgent(String jsonString) {
-		EntityManagerFactory factory 
-			= Persistence.createEntityManagerFactory("Workshop7");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("Workshop7");
 		EntityManager em = factory.createEntityManager();
 		
 		Gson gson = new Gson();
