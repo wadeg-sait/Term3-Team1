@@ -35,18 +35,28 @@ function loadAgent(agentId) {
 				var agent = JSON.parse(req.responseText);
 				var agentDiv = document.getElementById("agentDiv");
 				
-				agentDiv.innerHTML = "agentId: " + agent.agentId + "<br />"
-				+ "agtFirstName: " + agent.agtFirstName + "<br />"
-				+ "agtMiddleInitial: " + agent.agtMiddleInitial + "<br />"
-				+ "agtLastName: " + agent.agtLastName + "<br />"
-				+ "agtBusPhone: " + agent.agtBusPhone + "<br />"
-				+ "agtEmail: " + agent.agtEmail + "<br />"
-				+ "agtPosition: " + agent.agtPosition + "<br />"
-				+ "agencyId: " + agent.agencyId + "<br />" + "agtUserId: "
-				+ agent.agtUserId + "<br />" + "agtPassword: "
-				+ agent.agtPassword + "<br />"
+//				agentDiv.innerHTML = "agentId: " + agent.agentId + "<br />"
+//				+ "agtFirstName: " + agent.agtFirstName + "<br />"
+//				+ "agtMiddleInitial: " + agent.agtMiddleInitial + "<br />"
+//				+ "agtLastName: " + agent.agtLastName + "<br />"
+//				+ "agtBusPhone: " + agent.agtBusPhone + "<br />"
+//				+ "agtEmail: " + agent.agtEmail + "<br />"
+//				+ "agtPosition: " + agent.agtPosition + "<br />"
+//				+ "agencyId: " + agent.agencyId + "<br />" + "agtUserId: "
+//				+ agent.agtUserId + "<br />" + "agtPassword: "
+//				+ agent.agtPassword + "<br />"
 				var agentDetails = document.getElementById("agentDetails");
 				agentDetails.style="display:block";
+				document.getElementById("agentId").value = agent.agentId;
+				document.getElementById("agtFirstName").value = agent.agtFirstName;
+				document.getElementById("agtMiddleInitial").value = agent.agtMiddleInitial;
+				document.getElementById("agtLastName").value = agent.agtLastName;
+				document.getElementById("agtBusPhone").value = agent.agtBusPhone;
+				document.getElementById("agtEmail").value = agent.agtEmail;
+				document.getElementById("agtPosition").value = agent.agtPosition;
+				document.getElementById("agencyId").value = agent.agencyId;
+				//document.getElementById("agtUserId").value = agent.agtUserId;
+				//document.getElementById("agtPassword").value = agent.agtPassword;
 			}
 	}
 	
