@@ -65,7 +65,7 @@ public class AgentRestService {
 		//Type type = new TypeToken<List<Agent>>() {}.getType();
 		em.close();
 		factory.close();
-
+		System.out.println("in getallagents");
         return gson.toJson(list); //, type);	
 	}
 
@@ -74,20 +74,20 @@ public class AgentRestService {
     @Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String postAgent(String jsonString) {
-//		EntityManagerFactory factory 
-//			= Persistence.createEntityManagerFactory("Workshop7");
-//		EntityManager em = factory.createEntityManager();
-//		
-//		Gson gson = new Gson();
-//		Type type = new TypeToken<Agent>() {}.getType();
-//		Agent agent = gson.fromJson(jsonString, type);
-//		em.getTransaction().begin();
-//		Agent newAgent = em.merge(agent);
-//		em.getTransaction().commit();
-//		em.close();
-//		factory.close();
-
-        return jsonString;//"Agent was updated";	
+		EntityManagerFactory factory 
+			= Persistence.createEntityManagerFactory("Workshop7");
+		EntityManager em = factory.createEntityManager();
+		
+		Gson gson = new Gson();
+		Type type = new TypeToken<Agent>() {}.getType();
+		Agent agent = gson.fromJson(jsonString, type);
+		em.getTransaction().begin();
+		Agent newAgent = em.merge(agent);
+		em.getTransaction().commit();
+		em.close();
+		factory.close();
+		System.out.println("Agent Updated :" + agent.toString());
+        return "Agent was updated";	
 	}
 
 	@PUT
@@ -106,13 +106,14 @@ public class AgentRestService {
 		em.getTransaction().commit();
 		em.close();
 		factory.close();
-		
+		System.out.println("Agent date added: "+agent);
         return "Agent added to database";	
 	}
 
 	@DELETE
 	@Path("/deleteagent/{ agentId }")
 	public String deleteAgent(@PathParam("agentId") int agentId) {
+		System.out.println("In delete");
 		EntityManagerFactory factory 
 			= Persistence.createEntityManagerFactory("Workshop7");
 		EntityManager em = factory.createEntityManager();
@@ -125,13 +126,15 @@ public class AgentRestService {
 			em.getTransaction().rollback();
 			em.close();
 			factory.close();
-			return "There was an error while deleting this agent";
+			System.out.println("There was an error while deleting this agent");
+			return "There was an error while deleting this agent";			
 		}
 		else
 		{
 			em.getTransaction().commit();
 			em.close();
 			factory.close();
+			System.out.println("Agent was deleted");
 			return "Agent was deleted";
 		}
 	}

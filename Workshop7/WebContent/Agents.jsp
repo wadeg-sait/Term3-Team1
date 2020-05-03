@@ -40,7 +40,7 @@
 		<select name='agents' id='agents' onchange='loadAgent(this.value)'>
 			<option value=''>Select an agent from the list</option>
 		</select>
-
+ 		<button id="btnNew"  type="button" class="btn btn-secondary" onclick='loadAgent(0)'>New Agent</button>
 
 		<div id='agentDetails'
 			class="section jumbotron see-through small-pad col-md-6"
@@ -93,7 +93,7 @@
 				</div>
 			</div>
 			<div class="form-row">
-				<div class="form-group col-6">
+				<div class="form-group col-12">
 					<label for="agtEmail">Email</label> <input type="email"
 						class="form-control" id="agtEmail" placeholder="Email"
 						name="agtEmail" disabled>
@@ -104,7 +104,8 @@
 				<button id="btnEdit" type="button" class="btn btn-primary"
 	                    onclick='enableControls()'>Edit</button>&nbsp;&nbsp;
 	            <button id="btnReset" type="reset" class="btn btn-secondary" onclick='loadAgent(document.getElementById("agents").value)' disabled style="display: none">Reset</button>&nbsp;&nbsp;
-	            <button id="btnSave"  type="button" class="btn btn-secondary" onclick='updateAgent()' disabled style="display: none">Save</button>
+	            <button id="btnSave"  type="button" class="btn btn-secondary" onclick='updateAgent()' disabled style="display: none">Save</button>&nbsp;&nbsp;
+	             <button id="btnDelete"  type="button" class="btn btn-secondary" onclick='deleteAgent(document.getElementById("agents").value)' style="display: none">Delete</button>
 			</div>
 		</div>
 		<!-- Section div -->
