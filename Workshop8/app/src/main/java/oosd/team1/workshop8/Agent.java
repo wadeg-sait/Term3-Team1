@@ -3,31 +3,34 @@
  *
  * */
 
-package com.wade.day12exercise;
+package oosd.team1.workshop8;
 
 import java.io.Serializable;
 
 public class Agent implements Serializable {
     private int agentId;
-    private String agtFirstName;
-    private String agtMiddleInitial;
-    private String agtLastName;
+    private int agencyId;
     private String agtBusPhone;
     private String agtEmail;
+    private String agtFirstName;
+    private String agtLastName;
+    private String agtMiddleInitial;
     private String agtPosition;
-    private int agencyId;
+
 
     //constructor
-    public Agent(int agentId, String agtFirstName, String agtMiddleInitial, String agtLastName, String agtBusPhone, String agtEmail, String agtPosition, int agencyId) {
+    public Agent(int agentId, int agencyId, String agtBusPhone, String agtEmail, String agtFirstName, String agtLastName, String agtMiddleInitial, String agtPosition) {
         this.agentId = agentId;
-        this.agtFirstName = agtFirstName;
-        this.agtMiddleInitial = agtMiddleInitial;
-        this.agtLastName = agtLastName;
+        this.agencyId = agencyId;
         this.agtBusPhone = agtBusPhone;
         this.agtEmail = agtEmail;
+        this.agtFirstName = agtFirstName;
+        this.agtLastName = agtLastName;
+        this.agtMiddleInitial = agtMiddleInitial;
         this.agtPosition = agtPosition;
-        this.agencyId = agencyId;
+
     }
+    //public Agent (){}
 
     // getters
     public int getAgentId() { return agentId; }
