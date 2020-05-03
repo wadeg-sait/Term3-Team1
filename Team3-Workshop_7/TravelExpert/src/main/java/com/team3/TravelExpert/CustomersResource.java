@@ -1,4 +1,4 @@
-/*package com.team3.TravelExpert;
+package com.team3.TravelExpert;
 
 
 import java.util.List;
@@ -13,6 +13,8 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.google.gson.Gson;
+
 
 @Path("customers")
 public class CustomersResource {
@@ -23,7 +25,8 @@ public class CustomersResource {
 	public List<Customers> getCustomers()
 	
 	{	
-	
+		System.out.println("Test");
+		return bookdb.getCustomers();
 	}
 	
 	@GET
@@ -31,26 +34,7 @@ public class CustomersResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Customers getCustomers(@PathParam("id") int id)
 	{
-		
-	}
-	
-	@POST
-	@Path("addCustomer")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Customers  addCustomer(Customers b)
-	
-	{
-	
-		
-		
-	}
-	
-	@PUT
-	@Path("updateCustomer")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public Customers updateCustomer(Customers ub)
-	{
-		
+		return bookdb.getCustomer(id);
 	}
 	
 	@DELETE 
@@ -58,8 +42,58 @@ public class CustomersResource {
 	public Customers deleteCustomer(@PathParam("id") int id)
 	
 	{
+		Customers customer= bookdb.getCustomer(id);
+		if (customer.getCustomerId()!=0)
+			bookdb.deleteCustomer(id);
+		
+		return customer;
+	}
+	
+	@POST
+	@Path("addCustomer")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public String  addCustomer(String jsonString)
+	
+	{
+		System.out.print(jsonString);
+		
+		Gson gson = new Gson();
+		Customers b = gson.fromJson(jsonString, Customers.class);
+		
+		System.out.println(b);
+		bookdb.addCustomer(b);
+		
+		return jsonString;
+		
 		
 	}
 	
+	
+	
+	@PUT
+	@Path("updateCustomer")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public Customers updateCustomer(String jsonString)
+	{
+		
+		Gson gson = new Gson();
+		Customers ub = gson.fromJson(jsonString, Customers.class);
+		System.out.println(ub);
+		if (bookdb.getCustomer(ub.getCustomerId()).getCustomerId()==0)
+		{
+			bookdb.addCustomer(ub);
+		}
+		
+		
+		else {
+			bookdb.updateCustomer(ub);
+		}
+		System.out.println(ub);
+		
+		return ub;
+		
+	}
+	
+
+	
 }
-*/
