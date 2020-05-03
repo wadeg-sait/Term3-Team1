@@ -37,6 +37,7 @@ public class BookingsRestService {
 	EntityManagerFactory factory =Persistence.createEntityManagerFactory("Workshop7");
 	
 	@GET
+	@Path("/getbookings")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Bookings> getBookings()
 	
@@ -47,7 +48,7 @@ public class BookingsRestService {
 	}
 	
 	@GET
-	@Path("/{id}")
+	@Path("/getbooking/{ id }")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Bookings getBooking(@PathParam("id") int id)
 	{
@@ -91,7 +92,7 @@ public class BookingsRestService {
 
 	
 	@DELETE 
-	@Path("deleteBooking/{id}")
+	@Path("/deleteBooking/{id}")
 	public String deleteBooking(@PathParam("id") int id)
 	
 	{

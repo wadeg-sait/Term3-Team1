@@ -100,7 +100,12 @@
 				</div>
 
 			</div>
-
+			<div class="form-row">
+				<button id="btnEdit" type="button" class="btn btn-primary"
+	                    onclick='enableControls()'>Edit</button>&nbsp;&nbsp;
+	            <button id="btnReset" type="reset" class="btn btn-secondary" onclick='loadAgent(document.getElementById("agents").value)' disabled style="display: none">Reset</button>&nbsp;&nbsp;
+	            <button id="btnSave"  type="button" class="btn btn-secondary" onclick='updateAgent()' disabled style="display: none">Save</button>
+			</div>
 		</div>
 		<!-- Section div -->
 	</div>

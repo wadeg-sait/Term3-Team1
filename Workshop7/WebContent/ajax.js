@@ -1,6 +1,23 @@
 /**
  * 
  */
+
+function enableControls(){
+	console.log("in enableControls");
+	document.getElementById("agtFirstName").disabled=false;
+	document.getElementById("agtMiddleInitial").disabled=false;
+	document.getElementById("agtLastName").disabled=false;
+	document.getElementById("agtBusPhone").disabled=false;
+	document.getElementById("agtEmail").disabled=false;
+	document.getElementById("agtPosition").disabled=false;
+	document.getElementById("btnEdit").disabled=true;
+	document.getElementById("btnReset").style="display:block";
+	document.getElementById("btnReset").disabled=false;
+	document.getElementById("btnSave").style="display:block";
+	document.getElementById("btnSave").disabled=true;
+	
+}
+
 function loadAllAgents() {
 	console.log("in loadAllAgents");
 	var req = new XMLHttpRequest();
@@ -23,95 +40,59 @@ function loadAllAgents() {
 	req.send();
 }
 
+function updateAgent() {
+	System.out.println("in update");
+	console.log("In update");
+	var req = new XMLHttpRequest();
+	var obj = new Object();
+	obj.agentId = document.getElementById("agentId").value;
+	obj.agtFirstName= document.getElementById("agtFirstName").value;
+	obj.agtMiddleInitial= document.getElementById("agtMiddleInitial").value;
+	obj.agtLastName =document.getElementById("agtLastName").value;
+	obj.agtBusPhone =document.getElementById("agtBusPhone").value;
+	obj.agtEmail = document.getElementById("agtEmail").value;
+	obj.agtPosition = document.getElementById("agtPosition").value;
+	obj.agencyId =document.getElementById("agencyId").value;
+	var data = JSON.stringify(obj);
+	req.open("POST","http://localhost:8080/Workshop7-1/rs/agent/postagent");
+	req.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	req.send(data);
+}
+
 function loadAgent(agentId) {
 	console.log("in loadAgent, agentId=" + agentId);
-	//var agentDiv = document.getElementById("agentDiv");
-	
-	//agentDiv.innerHTML = "agentId: " + agentId + "<br />"
-	
 	var req = new XMLHttpRequest();
 	req.onreadystatechange = function(){
 		if (req.readyState == 4 && req.status == 200){
 				var agent = JSON.parse(req.responseText);
-				var agentDiv = document.getElementById("agentDiv");
-				
-//				agentDiv.innerHTML = "agentId: " + agent.agentId + "<br />"
-//				+ "agtFirstName: " + agent.agtFirstName + "<br />"
-//				+ "agtMiddleInitial: " + agent.agtMiddleInitial + "<br />"
-//				+ "agtLastName: " + agent.agtLastName + "<br />"
-//				+ "agtBusPhone: " + agent.agtBusPhone + "<br />"
-//				+ "agtEmail: " + agent.agtEmail + "<br />"
-//				+ "agtPosition: " + agent.agtPosition + "<br />"
-//				+ "agencyId: " + agent.agencyId + "<br />" + "agtUserId: "
-//				+ agent.agtUserId + "<br />" + "agtPassword: "
-//				+ agent.agtPassword + "<br />"
+				var agentDiv = document.getElementById("agentDiv");			
 				var agentDetails = document.getElementById("agentDetails");
 				agentDetails.style="display:block";
 				document.getElementById("agentId").value = agent.agentId;
+				document.getElementById("agentId").disabled=true;
 				document.getElementById("agtFirstName").value = agent.agtFirstName;
+				document.getElementById("agtFirstName").disabled=true;
 				document.getElementById("agtMiddleInitial").value = agent.agtMiddleInitial;
+				document.getElementById("agtMiddleInitial").disabled=true;
 				document.getElementById("agtLastName").value = agent.agtLastName;
+				document.getElementById("agtLastName").disabled=true;
 				document.getElementById("agtBusPhone").value = agent.agtBusPhone;
+				document.getElementById("agtBusPhone").disabled=true;
 				document.getElementById("agtEmail").value = agent.agtEmail;
+				document.getElementById("agtEmail").disabled=true;
 				document.getElementById("agtPosition").value = agent.agtPosition;
+				document.getElementById("agtPosition").disabled=true;
 				document.getElementById("agencyId").value = agent.agencyId;
-				//document.getElementById("agtUserId").value = agent.agtUserId;
-				//document.getElementById("agtPassword").value = agent.agtPassword;
+				document.getElementById("agencyId").disabled=true;
+				document.getElementById("btnEdit").disabled=false;
+				document.getElementById("btnReset").style="display:block";
+				document.getElementById("btnReset").disabled=true;
+				document.getElementById("btnSave").style="display:block";
+				document.getElementById("btnSave").disabled=true;
 			}
 	}
 	
 req.open("GET","http://localhost:8080/Workshop7-1/rs/agent/getagent/"+ agentId)
 req.send();
-
-}
-
-function loadForm(agentId) {
-	console.log("in loadForm, agentId=" + agentId);
-	var req = new XMLHttpRequest();
-
-	req.onreadystatechange = function() {
-		if (req.readyState == 4 && req.status == 200) {
-			var agent = JSON.parse(req.responseText);
-			document.getElementById("agentId").value = agent.agentId;
-			document.getElementById("agtFirstName").value = agent.agtFirstName;
-			document.getElementById("agtMiddleInitial").value = agent.agtMiddleInitial;
-			document.getElementById("agtLastName").value = agent.agtLastName;
-			document.getElementById("agtBusPhone").value = agent.agtBusPhone;
-			document.getElementById("agtEmail").value = agent.agtEmail;
-			document.getElementById("agtPosition").value = agent.agtPosition;
-			document.getElementById("agencyId").value = agent.agencyId;
-			document.getElementById("agtUserId").value = agent.agtUserId;
-			document.getElementById("agtPassword").value = agent.agtPassword;
-		}
-	}
-	req.open("GET", "rs/agent/getagent/" + agentId);
-	req.send();
-
-}
-
-function updateAgent() {
-	console.log("in updateAgent");
-	
-	//get a collection of the child nodes inside the div of fields in the agentupdate.html file 
-	var divChildren = $("#myFields input");
-	//create a JSON object shell
-	var mydata = {};
-	//loop through the fields and add the fieldname and value to the object
-	for (i = 0; i < divChildren.length; i++) {
-		mydata[divChildren[i].id] = divChildren[i].value;
-
-	}
-	//console.log(JSON.stringify(mydata));
-
-	$.ajax({
-		url:"rs/agent/postagent",
-		type:"POST",
-		data:JSON.stringify(mydata),
-		complete:function(req,stat){ $("#message").html(stat); },
-		success:function(data){ $("#message").append("<br />" + data); },
-		dataType:"text",
-		contentType:"application/json; charset=UTF-8"
-	});
-	
 
 }

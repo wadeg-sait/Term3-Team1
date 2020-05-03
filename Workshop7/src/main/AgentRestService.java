@@ -74,20 +74,20 @@ public class AgentRestService {
     @Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String postAgent(String jsonString) {
-		EntityManagerFactory factory 
-			= Persistence.createEntityManagerFactory("Workshop7");
-		EntityManager em = factory.createEntityManager();
-		
-		Gson gson = new Gson();
-		Type type = new TypeToken<Agent>() {}.getType();
-		Agent agent = gson.fromJson(jsonString, type);
-		em.getTransaction().begin();
-		Agent newAgent = em.merge(agent);
-		em.getTransaction().commit();
-		em.close();
-		factory.close();
+//		EntityManagerFactory factory 
+//			= Persistence.createEntityManagerFactory("Workshop7");
+//		EntityManager em = factory.createEntityManager();
+//		
+//		Gson gson = new Gson();
+//		Type type = new TypeToken<Agent>() {}.getType();
+//		Agent agent = gson.fromJson(jsonString, type);
+//		em.getTransaction().begin();
+//		Agent newAgent = em.merge(agent);
+//		em.getTransaction().commit();
+//		em.close();
+//		factory.close();
 
-        return "Agent was updated";	
+        return jsonString;//"Agent was updated";	
 	}
 
 	@PUT
