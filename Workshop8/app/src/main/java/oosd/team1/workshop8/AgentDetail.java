@@ -11,9 +11,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import oosd.team1.workshop8.Agent;
-
+// class to get individual details of the agent that was clicked
 public class AgentDetail extends AppCompatActivity {
-
+// setup buttons and text fields
     EditText etAgentId,etAgtFirstName, etAgtMiddleInitial, etAgtLastName, etAgtEmail, etAgtBusPhone, etAgtPosition, etAgencyID;
     Button btnSave, btnCancel;
 
@@ -21,7 +21,7 @@ public class AgentDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agent_detail);
-
+//set references to said buttons and text fields
         btnSave = findViewById(R.id.btnSave);
         btnCancel = findViewById(R.id.btnCancel);
         etAgentId = findViewById(R.id.etAgentId);
@@ -33,7 +33,7 @@ public class AgentDetail extends AppCompatActivity {
         etAgtPosition = findViewById(R.id.etAgtPosition);
         etAgencyID = findViewById(R.id.etAgencyId);
 
-
+//state your intentions... Display the data
         Intent intent = getIntent();
         String mode = intent.getStringExtra("mode");
         if(mode.equals("update")){
@@ -51,7 +51,7 @@ public class AgentDetail extends AppCompatActivity {
         }
 
        // final AgentDataSource agentDataSource = new AgentDataSource(this);
-
+// no save for you!
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +69,7 @@ public class AgentDetail extends AppCompatActivity {
             }
         });
 
+        // forget it, Im outta here
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +78,7 @@ public class AgentDetail extends AppCompatActivity {
             }
         });
     }
+    // is there anything in the field?
     private boolean isEmpty(EditText editText) {
         return editText.getText().toString().trim().length() == 0;
     }

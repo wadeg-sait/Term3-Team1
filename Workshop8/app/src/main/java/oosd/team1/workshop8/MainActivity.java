@@ -16,19 +16,20 @@ import android.widget.Toast;
 import static java.lang.Class.forName;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+    // declare the button objects
     Button btnAgents, btnBookings, btnCustomers, btnSuppliers, btnExtra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+// set said button object references
         Button btnAgents = findViewById(R.id.btnAgents);
         Button btnBookings = findViewById(R.id.btnBookings);
         Button btnCustomers = findViewById(R.id.btnCustomers);
         Button btnSuppliers = findViewById(R.id.btnSuppliers);
         Button btnExtra = findViewById(R.id.btnExtra);
-
+//handle the button clicks
         btnAgents.setOnClickListener(this);
         btnBookings.setOnClickListener(this);
         btnCustomers.setOnClickListener(this);
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     }
-
+// capture the button press, perform a function based on what button was pressed
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -68,10 +69,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     }
+// open other 'pages' of content
     public void openActivity(Class activity) {
-
         Intent intent = new Intent(this, activity);
         startActivity(intent);
-
     }
 }

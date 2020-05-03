@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+
+// These aren't the droid your looking for, move on...
 public class ExtraActivity extends AppCompatActivity {
 
     @Override
