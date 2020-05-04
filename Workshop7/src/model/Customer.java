@@ -36,8 +36,6 @@ public class Customer implements Serializable {
 
 	private String custLastName;
 
-	private int custPhone;
-
 	private String custPostal;
 
 	private String custProv;
@@ -147,14 +145,10 @@ public class Customer implements Serializable {
 	}
 
 
-	public int getCustPhone() {
-		return custPhone;
-	}
+	
 
 
-	public void setCustPhone(int custPhone) {
-		this.custPhone = custPhone;
-	}
+
 
 
 	public String getCustPostal() {
