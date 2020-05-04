@@ -6,6 +6,8 @@ import java.sql.Date;
 import java.util.*;
 
 
+
+
 public class BookingDBConnection {
 
 	
@@ -15,13 +17,13 @@ Connection con = null;
 	public BookingDBConnection(){
 		
 		
-		String url="jdbc:mariadb://localhost:3306/travelexperts";
+		String url="jdbc:mysql://localhost:3306/travelexperts";
 		String username= "root";
 		String password ="";
 		try
 		
 		{
-			Class.forName("org.mariadb.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(url,username,password);		
 		}
 		
