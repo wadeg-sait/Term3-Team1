@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+Created by Wade Grimm
+
+-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AgentDetail" >
+    tools:context=".AgentDetail">
 
     <LinearLayout
         android:id="@+id/LinearLayout"
@@ -197,9 +200,11 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="252dp"
+        android:layout_width="0dp"
         android:layout_height="112dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
         android:orientation="horizontal"
         android:padding="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -221,6 +226,15 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
             android:text="@string/btnCancel" />
+
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="@string/delete" />
 
     </LinearLayout>
 

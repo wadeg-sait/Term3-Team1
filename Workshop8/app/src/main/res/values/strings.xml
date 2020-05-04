@@ -1,3 +1,7 @@
+<!--
+Created by Wade Grimm
+
+-->
 <resources>
     <string name="app_name">Workshop8</string>
     <string name="addition_content_like_packages_etc">Additional content like Packages,etc</string>
@@ -17,4 +21,6 @@
     <string name="btnCancel">Cancel</string>
     <string name="btnSave">Save</string>
     <string name="tap_agent_name_see_details">Tap Agent name see details</string>
+    <string name="add_agent">Add Agent</string>
+    <string name="delete">Delete</string>
 </resources>

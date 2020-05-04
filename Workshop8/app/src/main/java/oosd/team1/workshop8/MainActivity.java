@@ -1,7 +1,8 @@
 /*
-* Workshop 8 base skeleton created by Wade Grimm
-*
-* */
+ * Created by Wade Grimm
+ *
+ * */
+
 
 package oosd.team1.workshop8;
 
@@ -15,7 +16,7 @@ import android.widget.Toast;
 
 import static java.lang.Class.forName;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     // declare the button objects
     Button btnAgents, btnBookings, btnCustomers, btnSuppliers, btnExtra;
 
@@ -37,39 +38,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnExtra.setOnClickListener(this);
 
 
-
-
     }
-// capture the button press, perform a function based on what button was pressed
+
+    // capture the button press, perform a function based on what button was pressed
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.btnAgents:
                 // do something
                 openActivity(AgentActivity.class);
-                Toast.makeText(this,"Load Agents",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Load Agents", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnBookings:
                 // do something
-                Toast.makeText(this,"Load Bookings",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Load Bookings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnCustomers:
                 // do something
-                Toast.makeText(this,"Load Customers",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Load Customers", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnSuppliers:
                 // do something
-                Toast.makeText(this,"Load Suppliers",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Load Suppliers", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnExtra:
                 // do something
-                Toast.makeText(this,"Load Extras",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Load Extras", Toast.LENGTH_SHORT).show();
                 break;
 
 
         }
     }
-// open other 'pages' of content
+
+    // open other 'pages' of content
     public void openActivity(Class activity) {
         Intent intent = new Intent(this, activity);
         startActivity(intent);

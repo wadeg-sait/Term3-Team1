@@ -225,9 +225,9 @@ public class BookingDBConnection {
 			 }
 		}
 	
-		public List<Customers> getCustomers(){
+		public List<Customer> getCustomers(){
 			
-			List<Customers> customerslist = new ArrayList<Customers>();
+			List<Customer> customerslist = new ArrayList<Customer>();
 			String sql = "select * from  customers";
 			 try 
 			 {
@@ -237,7 +237,7 @@ public class BookingDBConnection {
 		
 				 while(rs.next())
 				 {
-					 Customers customer= new Customers();
+					 Customer customer= new Customer();
 					 	
 					 customer.setCustomerId(rs.getInt(1));
 					 customer.setCustFirstName(rs.getString(2));
@@ -267,11 +267,11 @@ public class BookingDBConnection {
 			
 		}
 		
-		public Customers getCustomer(int id){
+		public Customer getCustomer(int id){
 			
 			
 			String sql = "select * from  customers where CustomerId="+id;
-			 Customers customer= new Customers();
+			 Customer customer= new Customer();
 		
 			try 
 			 {
@@ -330,7 +330,7 @@ public class BookingDBConnection {
 		
 		}
 		
-		public void addCustomer(Customers b)
+		public void addCustomer(Customer b)
 		{
 			String sql= "insert into  customers values (?,?,?,?,?,?,?,?,?,?,?,?)";
 			try 
@@ -370,7 +370,7 @@ public class BookingDBConnection {
 			 }
 		}
 		
-		public void updateCustomer(Customers b)
+		public void updateCustomer(Customer b)
 		{
 			String sql= "update customers set CustFirstName=?, CustLastName=?, CustAddress=?, CustCity=?, CustProv=?, CustPostal=? , CustCountry=?, CustHomePhone=?,CustBusPhone=?, CustEmail=?, AgentId=? where CustomerId=?";
 			try 
