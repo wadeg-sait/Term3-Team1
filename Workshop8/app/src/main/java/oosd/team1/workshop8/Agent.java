@@ -30,6 +30,10 @@ public class Agent implements Serializable {
         this.agtPosition = agtPosition;
 
     }
+
+    public Agent() {
+
+    }
     //public Agent (){}
 
     // getters

@@ -5,20 +5,16 @@
 
 package oosd.team1.workshop8;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.AdapterView;
-
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -26,32 +22,28 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class AgentActivity extends AppCompatActivity {
     // setup controls, objects
+    Button btnAdd;
     ListView lvAgents;
     ArrayAdapter<Agent> agentsAdapter;
     ArrayList<Agent> agents = new ArrayList<>();
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agents);
         // grab ref to ListView
         lvAgents = findViewById(R.id.lvAgents);
+        btnAdd = findViewById(R.id.btnAdd);
         // on click listener for listview items
         lvAgents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -62,17 +54,27 @@ public class AgentActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AgentDetail.class);
+
+                intent.putExtra("mode","Add");
+                startActivity(intent);
+            }
+        });
+
 //get the agent data from rest service on web server
         loadAgentData();
         }
 
         // we use Volley to request, receive the JSON data from the server
     private void loadAgentData() {
-       String URL = "http://10.10.63.176:8080/Workshop7-1/rs/agent/getallagents";
-       //setup the request queue
-       RequestQueue requestQueue = Volley.newRequestQueue(this);
+       String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/getallagents";
        //setup the request - it requires the method (Get, Post), URL, any parameters that need to be sent, a listener object and listener error object
-       JsonArrayRequest objectRequest = new JsonArrayRequest(Request.Method.GET, URL, null,
+        //setup the request queue
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+       JsonArrayRequest objectRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -113,6 +115,9 @@ public class AgentActivity extends AppCompatActivity {
        // send the request
         requestQueue.add(objectRequest);
     }
+
+
+
 }
 
 

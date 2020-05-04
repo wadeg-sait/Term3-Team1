@@ -32,6 +32,12 @@ Base skeleton created by Wade Grimm
         <ListView
             android:id="@+id/lvAgents"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="552dp" />
+
+        <Button
+            android:id="@+id/btnAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_agent" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
