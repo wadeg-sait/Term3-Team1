@@ -10,8 +10,13 @@ const submit = document.querySelector('#submit');
 const cancel = document.querySelector('#cancel');
 const table = document.querySelector('#bookingData');
 const hideShow = document.querySelector('#hideshow');
-const inpBookingId = document.querySelector('#bkid');
 const formTitle = document.querySelector('#formTitle');
+const inpBookingId = document.querySelector('#bkid');
+const inpBookingNum = document.querySelector('#bknm');
+const inpTravelerCount = document.querySelector('#trcnt');
+const inpcustomerId = document.querySelector('#csid');
+const inptripTypeId = document.querySelector('#trid');
+const inppackageId = document.querySelector('#pkid');
 
 window.addEventListener('load', function() {
 	getData();
@@ -31,7 +36,7 @@ function getData() {
 		console.log('ERROR!!!!!!');
 	});
 
-	getReq.open('GET', 'http://localhost:8080/Workshop7-1/rs/bookings');
+	getReq.open('GET', 'http://localhost:8080/Workshop7-1/rs/bookings/getbookings');
 	getReq.send();
 }
 
@@ -70,17 +75,15 @@ function tableData(result) {
 		edit.addEventListener('click', function() {
 			form.classList.remove('collapse');
 			hideShow.classList.add('collapse');
+			inpBookingId.value = row.bookingId;
+			inpBookingNum.value = row.bookingNo;
+			inpTravelerCount.value = row.travelerCount;
+			inpcustomerId.value = row.customerId;
+			inptripTypeId.value = row.tripTypeId;
+			inppackageId.value = row.packageId;
+			formTitle.innerText = `EDITING BOOKINGS FOR BOOKING ID ${row.bookingId}`;
 
-			submit.addEventListener('click', () => {
-				console.log(' have to put put method // update table');
-				hideShow.classList.remove('collapse');
-				formCollpase();
-			});
-
-			cancel.addEventListener('click', function() {
-				hideShow.classList.remove('collapse');
-				formCollpase();
-			});
+			
 		});
 
 		const del = document.createElement('button');
@@ -117,21 +120,84 @@ function formCollpase() {
 addBtn.addEventListener('click', function() {
 	form.classList.remove('collapse');
 	hideShow.classList.add('collapse');
-	inpBookingId.value = data[data.length - 1].bookingId + 1;
+	inpBookingId.value = Math.max(data[data.length - 1].bookingId + 1, data[0].bookingId + 1);
 	formTitle.innerText = 'ADD NEW BOOKING';
-
-
-	submit.addEventListener('click', () => {
-		console.log(' have to put post method // update table');
-		hideShow.classList.remove('collapse');
-		formCollpase();
-	});
-
-	cancel.addEventListener('click', function() {
-		formCollpase();
-		hideShow.classList.remove('collapse');
-	});
 });
+
+submit.addEventListener('click', () => {
+	formDataCapture();
+	formClear();
+	hideShow.classList.remove('collapse');
+	formCollpase();
+	clearTableRow();
+	getData();
+});
+
+cancel.addEventListener('click', function() {
+	formClear();
+	formCollpase();
+	hideShow.classList.remove('collapse');
+});
+
+function formDataCapture() {
+	const formdata = {};
+	formdata.bookingId = parseInt(inpBookingId.value);
+	formdata.bookingNo = inpBookingNum.value;
+	formdata.travelerCount = parseFloat(inpTravelerCount.value);
+	formdata.customerId = parseInt(inpcustomerId.value);
+	formdata.tripTypeId = inptripTypeId.value;
+	formdata.packageId = parseInt(inppackageId.value);
+	console.log(formdata);
+	if (formTitle.innerText == 'ADD NEW BOOKING') {
+		addBookings(formdata);
+	} else {
+		updateBookings(formdata);
+	}
+}
+
+function addBookings(addData) {
+	const xhr = new XMLHttpRequest();
+	const params = addData;
+	console.log(' i ma here for test');
+	console.log(params);
+	xhr.open('POST', 'http://localhost:8080/Workshop7-1/rs/bookings/postBooking');
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify(params));
+	xhr.onload = () => {
+		getData();
+		clearTableRow();
+		tableData(data.reverse());
+		console.log(xhr.responseText);
+	};
+}
+
+function updateBookings(updateData) {
+	const xhr = new XMLHttpRequest();
+	const params = updateData;
+	console.log(' i ma here for update');
+	console.log(params);
+	xhr.open('PUT', 'http://localhost:8080/Workshop7-1/rs/bookings/updateBooking');
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify(params));
+	xhr.onload = () => {
+		getData();
+		clearTableRow();
+		tableData(data.reverse());
+		console.log(xhr.responseText);
+	};
+}
+
+
+function formClear() {
+	inpBookingId.value = '';
+	inpBookingNum.value = '';
+	inpTravelerCount.value = '';
+	inpcustomerId.value = '';
+	inpcustomerId.value = '';
+	inptripTypeId.value = '';
+	inppackageId.value = '';
+}
+
 
 function postPut(btn) {
 	if (btn.innerText == 'Add Booking') {
