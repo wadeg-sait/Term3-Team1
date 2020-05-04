@@ -150,6 +150,13 @@ public class AgencyController {
 
     @FXML
     void addAgt() {
+        txtAgtFirstName.setText("");
+        txtAgtMiddleName.setText("");
+        txtAgtLastName.setText("");
+        txtAgtPosition.setText("");
+        txtAgtEmail.setText("");
+        txtAgtPhone.setText("");
+        txtAgtId.setText("");
 
         txtAgtFirstName.setEditable(true);
         txtAgtLastName.setEditable((true));
@@ -206,6 +213,11 @@ public class AgencyController {
     @FXML
     void addAgtSave() {
 
+        if(txtAgtFirstName.getText().isEmpty()||txtAgtMiddleName.getText().isEmpty()||txtAgtLastName.getText().isEmpty()
+        ||txtAgtPhone.getText().isEmpty()||txtAgtEmail.getText().isEmpty()||txtAgtPosition.getText().isEmpty()){
+            return;
+        }
+
         txtAgtFirstName.setEditable(false);
         txtAgtLastName.setEditable((false));
         txtAgtMiddleName.setEditable(false);
@@ -257,6 +269,13 @@ public class AgencyController {
     }
     @FXML
     void editAgtSave() {
+
+        if(txtAgtFirstName.getText().isEmpty()||txtAgtMiddleName.getText().isEmpty()||txtAgtLastName.getText().isEmpty()
+                ||txtAgtPhone.getText().isEmpty()||txtAgtEmail.getText().isEmpty()||txtAgtPosition.getText().isEmpty()){
+
+            System.out.println("cannot be null");
+            return;
+        }
 
         txtAgtFirstName.setEditable(false);
         txtAgtLastName.setEditable((false));
@@ -320,6 +339,13 @@ public class AgencyController {
         btnAgencyUpdate.setVisible(false);
         txtAgencyID.setVisible(false);
         reset.setVisible(true);
+        txtAgencyAddress.setText("");
+        txtAgencyPhone.setText("");
+        txtAgencyCountry.setText("");
+        txtAgencyFax.setText("");
+        txtAgencyPost.setText("");
+        txtAgencyProv.setText("");
+        txtAgencyCity.setText("");
         txtAgencyAddress.setEditable(true);
         txtAgencyCity.setEditable(true);
         txtAgencyCountry.setEditable(true);
@@ -374,6 +400,14 @@ public class AgencyController {
         reset.setVisible(false);
         lblAgencyID.setVisible(false);
         txtAgencyID.setEditable(false);
+        if(txtAgencyAddress.getText().isEmpty() || txtAgencyCity.getText().isEmpty() || txtAgencyCountry.getText().isEmpty()  || txtAgencyProv.getText().isEmpty()
+                || txtAgencyPhone.getText().isEmpty() ||txtAgencyFax.getText().isEmpty() ||txtAgencyPost.getText().isEmpty() ){
+
+            System.out.println("Cannot Add Return");
+            return ;
+
+        }
+        System.out.println("Adding");
         txtAgencyAddress.setEditable(false);
         txtAgencyCity.setEditable(false);
         txtAgencyCountry.setEditable(false);
@@ -417,6 +451,13 @@ public class AgencyController {
 
     @FXML
     void saveEditAgency() {
+        if(txtAgencyAddress.getText().isEmpty() || txtAgencyCity.getText().isEmpty() || txtAgencyCountry.getText().isEmpty()  || txtAgencyProv.getText().isEmpty()
+                || txtAgencyPhone.getText().isEmpty() ||txtAgencyFax.getText().isEmpty() ||txtAgencyPost.getText().isEmpty() ){
+
+            System.out.println("Cannot Add Return");
+            return ;
+
+        }
 
 
         try{
@@ -494,6 +535,7 @@ public class AgencyController {
         toplblAgencyId.setVisible(true);
         comboAgencyID.getSelectionModel().selectFirst();
         getAgencyDetails();
+        displayAgentDetails();
 
         txtAgtFirstName.setEditable(false);
         txtAgtLastName.setEditable((false));

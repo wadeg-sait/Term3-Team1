@@ -22,7 +22,7 @@ public class CustomersResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Customers> getCustomers()
+	public List<Customer> getCustomers()
 	
 	{	
 		System.out.println("Test");
@@ -32,17 +32,17 @@ public class CustomersResource {
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Customers getCustomers(@PathParam("id") int id)
+	public Customer getCustomers(@PathParam("id") int id)
 	{
 		return bookdb.getCustomer(id);
 	}
 	
 	@DELETE 
 	@Path("deleteCustomer/{id}")
-	public Customers deleteCustomer(@PathParam("id") int id)
+	public Customer deleteCustomer(@PathParam("id") int id)
 	
 	{
-		Customers customer= bookdb.getCustomer(id);
+		Customer customer= bookdb.getCustomer(id);
 		if (customer.getCustomerId()!=0)
 			bookdb.deleteCustomer(id);
 		
@@ -58,7 +58,7 @@ public class CustomersResource {
 		System.out.print(jsonString);
 		
 		Gson gson = new Gson();
-		Customers b = gson.fromJson(jsonString, Customers.class);
+		Customer b = gson.fromJson(jsonString, Customer.class);
 		
 		System.out.println(b);
 		bookdb.addCustomer(b);
@@ -73,11 +73,11 @@ public class CustomersResource {
 	@PUT
 	@Path("updateCustomer")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Customers updateCustomer(String jsonString)
+	public Customer updateCustomer(String jsonString)
 	{
 		
 		Gson gson = new Gson();
-		Customers ub = gson.fromJson(jsonString, Customers.class);
+		Customer ub = gson.fromJson(jsonString, Customer.class);
 		System.out.println(ub);
 		if (bookdb.getCustomer(ub.getCustomerId()).getCustomerId()==0)
 		{

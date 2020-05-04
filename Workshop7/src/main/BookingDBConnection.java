@@ -5,6 +5,10 @@ import java.sql.*;
 import java.sql.Date;
 import java.util.*;
 
+import model.Customer;
+
+
+
 
 public class BookingDBConnection {
 
@@ -15,13 +19,13 @@ Connection con = null;
 	public BookingDBConnection(){
 		
 		
-		String url="jdbc:mariadb://localhost:3306/travelexperts";
+		String url="jdbc:mysql://localhost:3306/travelexperts";
 		String username= "root";
 		String password ="";
 		try
 		
 		{
-			Class.forName("org.mariadb.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection(url,username,password);		
 		}
 		
@@ -220,8 +224,120 @@ public Bookings getBooking(int id){
 		 }
 	 
 	
-
-	
 }
+	
+	public List<Customer> getCustomers(){
+		
+		List<Customer> customerslist = new ArrayList<Customer>();
+		String sql = "select * from  customers";
+		 try 
+		 {
+			 Statement st = con.createStatement();
+			 ResultSet rs = st.executeQuery(sql);
+			 
+	
+			 while(rs.next())
+			 {
+				 Customer customer= new Customer();
+				 	
+				 customer.setCustomerId(rs.getInt(1));
+				 customer.setCustFirstName(rs.getString(2));
+				 customer.setCustLastName(rs.getString(3));
+				 customer.setCustAddress(rs.getString(4));
+				 customer.setCustCity(rs.getString(5));
+				 customer.setCustProv(rs.getString(6));
+				 customer.setCustPostal(rs.getString(7));
+				 customer.setCustCountry(rs.getString(8));
+				 customer.setCustHomePhone(rs.getString(9));
+				 customer.setCustBusPhone(rs.getString(10));
+				 customer.setCustEmail(rs.getString(11));
+				 customer.setAgentId(rs.getShort(12));
+				
+				 customerslist.add(customer);
+			 }
+		 }
+		 
+		 catch(Exception e)
+		 {
+			 System.out.println(e);
+			 
+		 }
+		 
+		 return customerslist;
+		
+		
+	}
+	
+	
+	public Customer getCustomer(int id){
+		
+		
+		String sql = "select * from  customers where CustomerId="+id;
+		 Customer customer= new Customer();
+	
+		try 
+		 {
+			 Statement st = con.createStatement();
+			 ResultSet rs = st.executeQuery(sql);
+			 
+			 int i=0;
+			 while(rs.next())
+			 {	
+				 customer.setCustomerId(rs.getInt(1));
+				 customer.setCustFirstName(rs.getString(2));
+				 customer.setCustLastName(rs.getString(3));
+				 customer.setCustAddress(rs.getString(4));
+				 customer.setCustCity(rs.getString(5));
+				 customer.setCustProv(rs.getString(6));
+				 customer.setCustPostal(rs.getString(7));
+				 customer.setCustCountry(rs.getString(8));
+				 customer.setCustHomePhone(rs.getString(9));
+				 customer.setCustBusPhone(rs.getString(10));
+				 customer.setCustEmail(rs.getString(11));
+				 customer.setAgentId(rs.getShort(12));
+				
+			 }
+		 }
+		 
+		 catch(Exception e)
+		 {
+			 System.out.println(e);
+			 
+		 }
+		 
+		 return customer;
+	
+		
+	}
+	
+	public void deleteCustomer(int id)
+	{
+		String sql= "delete from customers where CustomerId=?";
+		try 
+		 {	System.out.println("Im here to delete");
+			 PreparedStatement st = con.prepareStatement(sql);
+		
+
+			 st.setInt(1, id);
+		
+			
+			 st.executeUpdate();
+		 }
+		 
+		 catch(Exception e)
+		 {
+			 System.out.println(e);
+			 
+		 }
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
