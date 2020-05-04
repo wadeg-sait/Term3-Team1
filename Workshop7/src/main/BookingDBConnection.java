@@ -5,6 +5,8 @@ import java.sql.*;
 import java.sql.Date;
 import java.util.*;
 
+import model.Customer;
+
 
 
 
@@ -224,9 +226,9 @@ public Bookings getBooking(int id){
 	
 }
 	
-	public List<Customers> getCustomers(){
+	public List<Customer> getCustomers(){
 		
-		List<Customers> customerslist = new ArrayList<Customers>();
+		List<Customer> customerslist = new ArrayList<Customer>();
 		String sql = "select * from  customers";
 		 try 
 		 {
@@ -236,7 +238,7 @@ public Bookings getBooking(int id){
 	
 			 while(rs.next())
 			 {
-				 Customers customer= new Customers();
+				 Customer customer= new Customer();
 				 	
 				 customer.setCustomerId(rs.getInt(1));
 				 customer.setCustFirstName(rs.getString(2));
@@ -267,11 +269,11 @@ public Bookings getBooking(int id){
 	}
 	
 	
-	public Customers getCustomer(int id){
+	public Customer getCustomer(int id){
 		
 		
 		String sql = "select * from  customers where CustomerId="+id;
-		 Customers customer= new Customers();
+		 Customer customer= new Customer();
 	
 		try 
 		 {

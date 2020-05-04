@@ -18,4 +18,5 @@
     <string name="btnSave">Save</string>
     <string name="tap_agent_name_see_details">Tap Agent name see details</string>
     <string name="add_agent">Add Agent</string>
+    <string name="delete">Delete</string>
 </resources>

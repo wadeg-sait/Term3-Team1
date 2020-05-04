@@ -38,7 +38,7 @@ public class CustomerRestService {
 	@GET
 	@Path("/getCustomers")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Customers> getCustomers()
+	public List<Customer> getCustomers()
 	
 	{	
 		System.out.println("Test");
@@ -49,7 +49,7 @@ public class CustomerRestService {
 	@GET
 	@Path("/getCustomers/{ id }")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Customers getCustomer(@PathParam("id") int id)
+	public Customer getCustomer(@PathParam("id") int id)
 	{
 		return bookdb.getCustomer(id);	
 	}
@@ -93,7 +93,7 @@ public class CustomerRestService {
 	public String deleteCustomer(@PathParam("id") int id)
 	
 	{
-		Customers customer= bookdb.getCustomer(id);
+		Customer customer= bookdb.getCustomer(id);
 		if (customer.getCustomerId()!=0)
 		{
 			bookdb.deleteCustomer(id);

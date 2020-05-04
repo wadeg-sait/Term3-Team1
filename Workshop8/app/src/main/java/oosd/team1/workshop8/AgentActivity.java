@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -33,6 +35,7 @@ public class AgentActivity extends AppCompatActivity {
     ListView lvAgents;
     ArrayAdapter<Agent> agentsAdapter;
     ArrayList<Agent> agents = new ArrayList<>();
+    boolean emptyAdaptor = true;
 
 
 
@@ -67,9 +70,20 @@ public class AgentActivity extends AppCompatActivity {
 //get the agent data from rest service on web server
         loadAgentData();
         }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(!emptyAdaptor) {
+            agents.clear();
+            loadAgentData();
+            //Toast.makeText(getApplicationContext(),"onResume Fired.",Toast.LENGTH_LONG).show();
+        }
 
+        //loadAgentData();
+    }
         // we use Volley to request, receive the JSON data from the server
     private void loadAgentData() {
+        //lvAgents.setAdapter(null);
        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/getallagents";
        //setup the request - it requires the method (Get, Post), URL, any parameters that need to be sent, a listener object and listener error object
         //setup the request queue
@@ -104,6 +118,7 @@ public class AgentActivity extends AppCompatActivity {
                         // ListView needs an ArrayAdaptor to format the display items, we create it from the list of agents and set the list view to use it
                         ArrayAdapter agentsAdapter = new ArrayAdapter<>(AgentActivity.this, android.R.layout.simple_list_item_1, agents);
                         lvAgents.setAdapter(agentsAdapter);
+                        emptyAdaptor = false;
                     }
                 },
                 new Response.ErrorListener() { // if the request returns any errors dump them to the log
@@ -114,6 +129,7 @@ public class AgentActivity extends AppCompatActivity {
                 });
        // send the request
         requestQueue.add(objectRequest);
+
     }
 
 

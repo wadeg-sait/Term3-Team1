@@ -27,7 +27,7 @@ import oosd.team1.workshop8.Agent;
 public class AgentDetail extends AppCompatActivity {
 // setup buttons and text fields
     EditText etAgentId,etAgtFirstName, etAgtMiddleInitial, etAgtLastName, etAgtEmail, etAgtBusPhone, etAgtPosition, etAgencyID;
-    Button btnSave, btnCancel;
+    Button btnSave, btnCancel, btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class AgentDetail extends AppCompatActivity {
 //set references to said buttons and text fields
         btnSave = findViewById(R.id.btnSave);
         btnCancel = findViewById(R.id.btnCancel);
+        btnDelete = findViewById(R.id.btnDelete);
         etAgentId = findViewById(R.id.etAgentId);
         etAgtFirstName = findViewById(R.id.etAgtFirstName);
         etAgtMiddleInitial = findViewById(R.id.etAgtMiddleInitial);
@@ -82,14 +83,15 @@ public class AgentDetail extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                if(etAgentId.getText()!=null){
+                if(mode.equals("update")){
                     updateAgent(json);
+                    Toast.makeText(getApplicationContext(),"Record edited.",Toast.LENGTH_LONG).show();
+                    onBackPressed();
                 }else{
                     addAgent(json);
+                    Toast.makeText(getApplicationContext(),"Agent added.",Toast.LENGTH_LONG).show();
+                    onBackPressed();
                 }
-                //Toast.makeText(getApplicationContext(),"Json data: "+data,Toast.LENGTH_LONG).show();
-                //Toast.makeText(getApplicationContext(),"Record edited.",Toast.LENGTH_LONG).show();
-                //onBackPressed();
             }
         });
 
@@ -101,24 +103,41 @@ public class AgentDetail extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int agentId = Integer.parseInt(etAgentId.getText().toString());
+                if(agentId>9) {
+                    deleteAgent(agentId);
+                    Toast.makeText(getApplicationContext(),"Record deleted.",Toast.LENGTH_LONG).show();
+                    onBackPressed();
+                }else {
+                    Toast.makeText(getApplicationContext(),"Unable to delete record in prototype.",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
+
+
+
     // is there anything in the field?
     private boolean isEmpty(EditText editText) {
         return editText.getText().toString().trim().length() == 0;
     }
 
     private void addAgent(JSONObject data){
-        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/postagent";
+        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/putagent";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         // Enter the correct url for your api service site
         System.out.println(data);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, data,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, data,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
                         //resultTextView.setText("String Response : "+ response.toString());
-                        Toast.makeText(getApplicationContext(),"Agent added",Toast.LENGTH_LONG).show();
+                        //Toast.makeText(getApplicationContext(),"Agent added",Toast.LENGTH_LONG).show();
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -131,60 +150,49 @@ public class AgentDetail extends AppCompatActivity {
 
 
     private void updateAgent(JSONObject data){
-//        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/postagent";
-//        //setup the request queue
-//      JsonObjectRequest postRequest = new JsonObjectRequest(Request.Method.POST, url,
-//                new Response.Listener<String>()
-//                {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        // response
-//                        Log.d("Response", response);
-//                    }
-//                },
-//                new Response.ErrorListener()
-//                {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        // error
-//                        Log.d("Error.Response", error.toString());
-//                    }
-//                }
-//        ) {
-//            @Override
-//            protected Map<String, String> getParams()
-//            {
-//                Map<String, String>  params = new HashMap<String, String>();
-//                params.put("name", "Alif");
-//                params.put("domain", "http://itsalif.info");
-//
-//                return params;
-//            }
-//        };
-//        requestQueue.add(postRequest);
+        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/postagent";
+        //setup the request queue
+     RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        // Enter the correct url for your api service site
+        System.out.println(data);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, data,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //resultTextView.setText("String Response : "+ response.toString());
+                        //Toast.makeText(getApplicationContext(),"Agent updated",Toast.LENGTH_LONG).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println(error.toString());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
+
     }
 
     private void deleteAgent(int agentId){
-//        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/postagent/"+agentId;
-//        StringRequest dr = new StringRequest(Request.Method.DELETE, url,
-//                new Response.Listener<String>()
-//                {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        // response
-//                        Toast.makeText($this, response, Toast.LENGTH_LONG).show();
-//                    }
-//                },
-//                new Response.ErrorListener()
-//                {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        // error.
-//
-//                    }
-//                }
-//        );
-//        requestQueue.add(dr);
+        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/deleteagent/"+agentId;
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        // Enter the correct url for your api service site
+        //System.out.println(data);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.DELETE, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //resultTextView.setText("String Response : "+ response.toString());
+                        //Toast.makeText(getApplicationContext(),"Agent deleted",Toast.LENGTH_LONG).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println(error.toString());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
     }
 
 

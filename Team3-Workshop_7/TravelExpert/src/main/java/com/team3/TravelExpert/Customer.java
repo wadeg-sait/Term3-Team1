@@ -3,7 +3,7 @@ package com.team3.TravelExpert;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Customers {
+public class Customer {
 
 	private int CustomerId;
 	private String CustFirstName;
