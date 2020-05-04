@@ -1,5 +1,5 @@
 /*
- * Workshop 8 base skeleton created by Wade Grimm
+ * Created by Wade Grimm
  *
  * */
 

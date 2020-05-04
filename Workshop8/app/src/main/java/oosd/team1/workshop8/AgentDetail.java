@@ -1,3 +1,8 @@
+/*
+ * Created by Wade Grimm
+ *
+ * */
+
 package oosd.team1.workshop8;
 
 import androidx.appcompat.app.AppCompatActivity;
