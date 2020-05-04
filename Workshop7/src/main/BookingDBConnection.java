@@ -222,8 +222,120 @@ public Bookings getBooking(int id){
 		 }
 	 
 	
-
-	
 }
+	
+	public List<Customers> getCustomers(){
+		
+		List<Customers> customerslist = new ArrayList<Customers>();
+		String sql = "select * from  customers";
+		 try 
+		 {
+			 Statement st = con.createStatement();
+			 ResultSet rs = st.executeQuery(sql);
+			 
+	
+			 while(rs.next())
+			 {
+				 Customers customer= new Customers();
+				 	
+				 customer.setCustomerId(rs.getInt(1));
+				 customer.setCustFirstName(rs.getString(2));
+				 customer.setCustLastName(rs.getString(3));
+				 customer.setCustAddress(rs.getString(4));
+				 customer.setCustCity(rs.getString(5));
+				 customer.setCustProv(rs.getString(6));
+				 customer.setCustPostal(rs.getString(7));
+				 customer.setCustCountry(rs.getString(8));
+				 customer.setCustHomePhone(rs.getString(9));
+				 customer.setCustBusPhone(rs.getString(10));
+				 customer.setCustEmail(rs.getString(11));
+				 customer.setAgentId(rs.getShort(12));
+				
+				 customerslist.add(customer);
+			 }
+		 }
+		 
+		 catch(Exception e)
+		 {
+			 System.out.println(e);
+			 
+		 }
+		 
+		 return customerslist;
+		
+		
+	}
+	
+	
+	public Customers getCustomer(int id){
+		
+		
+		String sql = "select * from  customers where CustomerId="+id;
+		 Customers customer= new Customers();
+	
+		try 
+		 {
+			 Statement st = con.createStatement();
+			 ResultSet rs = st.executeQuery(sql);
+			 
+			 int i=0;
+			 while(rs.next())
+			 {	
+				 customer.setCustomerId(rs.getInt(1));
+				 customer.setCustFirstName(rs.getString(2));
+				 customer.setCustLastName(rs.getString(3));
+				 customer.setCustAddress(rs.getString(4));
+				 customer.setCustCity(rs.getString(5));
+				 customer.setCustProv(rs.getString(6));
+				 customer.setCustPostal(rs.getString(7));
+				 customer.setCustCountry(rs.getString(8));
+				 customer.setCustHomePhone(rs.getString(9));
+				 customer.setCustBusPhone(rs.getString(10));
+				 customer.setCustEmail(rs.getString(11));
+				 customer.setAgentId(rs.getShort(12));
+				
+			 }
+		 }
+		 
+		 catch(Exception e)
+		 {
+			 System.out.println(e);
+			 
+		 }
+		 
+		 return customer;
+	
+		
+	}
+	
+	public void deleteCustomer(int id)
+	{
+		String sql= "delete from customers where CustomerId=?";
+		try 
+		 {	System.out.println("Im here to delete");
+			 PreparedStatement st = con.prepareStatement(sql);
+		
+
+			 st.setInt(1, id);
+		
+			
+			 st.executeUpdate();
+		 }
+		 
+		 catch(Exception e)
+		 {
+			 System.out.println(e);
+			 
+		 }
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
