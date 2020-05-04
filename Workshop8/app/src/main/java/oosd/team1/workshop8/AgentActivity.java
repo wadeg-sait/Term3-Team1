@@ -24,9 +24,11 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 public class AgentActivity extends AppCompatActivity {
@@ -36,7 +38,6 @@ public class AgentActivity extends AppCompatActivity {
     ArrayAdapter<Agent> agentsAdapter;
     ArrayList<Agent> agents = new ArrayList<>();
     boolean emptyAdaptor = true;
-
 
 
     @Override
@@ -53,7 +54,7 @@ public class AgentActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(), AgentDetail.class);
                 intent.putExtra("agent", (Agent) lvAgents.getAdapter().getItem(position));
-                intent.putExtra("mode","update");
+                intent.putExtra("mode", "update");
                 startActivity(intent);
             }
         });
@@ -62,18 +63,19 @@ public class AgentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), AgentDetail.class);
 
-                intent.putExtra("mode","Add");
+                intent.putExtra("mode", "Add");
                 startActivity(intent);
             }
         });
 
 //get the agent data from rest service on web server
         loadAgentData();
-        }
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-        if(!emptyAdaptor) {
+        if (!emptyAdaptor) {
             agents.clear();
             loadAgentData();
             //Toast.makeText(getApplicationContext(),"onResume Fired.",Toast.LENGTH_LONG).show();
@@ -81,18 +83,19 @@ public class AgentActivity extends AppCompatActivity {
 
         //loadAgentData();
     }
-        // we use Volley to request, receive the JSON data from the server
+
+    // we use Volley to request, receive the JSON data from the server
     private void loadAgentData() {
         //lvAgents.setAdapter(null);
-       String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/getallagents";
-       //setup the request - it requires the method (Get, Post), URL, any parameters that need to be sent, a listener object and listener error object
+        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/getallagents";
+        //setup the request - it requires the method (Get, Post), URL, any parameters that need to be sent, a listener object and listener error object
         //setup the request queue
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-       JsonArrayRequest objectRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+        JsonArrayRequest objectRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
-                    // we receive the data back as a JSON Array, so we need to break it down to JSON Objects and then again into the Agent Objects
+                        // we receive the data back as a JSON Array, so we need to break it down to JSON Objects and then again into the Agent Objects
                         for (int i = 0; i < response.length(); i++) {
                             try {
                                 // pull out each JSON Object
@@ -127,11 +130,10 @@ public class AgentActivity extends AppCompatActivity {
                         Log.e("Error Response: ", error.toString());
                     }
                 });
-       // send the request
+        // send the request
         requestQueue.add(objectRequest);
 
     }
-
 
 
 }
