@@ -8,6 +8,18 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 
 <title>Travel Expert</title>
+<style>
+
+body {
+      background-image: url("imgs/background1.jpg");
+
+      color: black;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 300;
+      background-size: cover; 
+    }
+
+</style>
 </head>
 
 <script src="travelExpert.js/"></script>
@@ -76,17 +88,11 @@
                 </div>
         </div>
     </div>
-
-    <button type="button" class="btn btn-danger" id="btn">Danger</button>
-    <button type="button" class="btn btn-primary" id="addButton">Danger</button>
-
-<input type="text" id= "search">
-
-
-    <table class="table table-hover table-bordered  text-center" id="customerData">
+<h3>Customer Details</h3>
+    <table class="table table-hover table-bordered  text-center font-weight-bold" id="customerData">
       <thead class="thead-dark">
         <tr>
-          <th scope="col">Customer Id</th>
+          <th scope="col">Customer ID</th>
           <th scope="col">First Name</th>
           <th scope="col">Last Name</th>
           <th scope="col">Address</th>

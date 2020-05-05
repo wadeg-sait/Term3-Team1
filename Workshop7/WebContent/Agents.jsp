@@ -9,6 +9,18 @@
 <script src="ajax.js"></script>
 <script src="jquery.js"></script>
 <title>Travel Expert</title>
+<style>
+
+body {
+      background-image: url("imgs/background3.jpg");
+
+      color: black;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 300;
+      background-size: cover; 
+    }
+
+</style>
 </head>
 
 <script src="travelExpert.js"></script>

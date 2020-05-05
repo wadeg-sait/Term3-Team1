@@ -9,6 +9,20 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<title>Travel Experts</title>
+	
+<style>
+
+body {
+      background-image: url("imgs/background3.jpg");
+
+      color: black;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 300;
+      background-size: cover; 
+    }
+
+</style>
+
 </head>
 
 
