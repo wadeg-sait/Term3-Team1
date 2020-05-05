@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
 Base skeleton created by Wade Grimm
 -->
-
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
@@ -18,7 +18,7 @@ Base skeleton created by Wade Grimm
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="456.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AgencyController">
+<AnchorPane fx:id="mainPage" onMouseClicked="#clearMsg" onMouseMoved="#clearMsg" prefHeight="456.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AgencyController">
    <children>
       <Button fx:id="btnCancel" cancelButton="true" layoutX="489.0" layoutY="411.0" mnemonicParsing="false" onAction="#clickedCancel" prefHeight="30.0" prefWidth="90.0" text="Cancel">
          <font>
@@ -28,7 +28,7 @@ Base skeleton created by Wade Grimm
         <tabs>
           <Tab fx:id="tabAgent" text="Agents">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="383.0" prefWidth="586.0">
+              <AnchorPane fx:id="tabAgt" minHeight="0.0" minWidth="0.0" onMouseMoved="#clearMsg" prefHeight="383.0" prefWidth="586.0">
                      <children>
                         <Label layoutX="16.0" layoutY="14.0" prefHeight="18.0" prefWidth="63.0" text="Agency  :">
                            <font>
@@ -200,9 +200,9 @@ Base skeleton created by Wade Grimm
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab fx:id="tabAgency" onSelectionChanged="#tabChangeReset" text="Agencies">
+          <Tab  onSelectionChanged="#tabChangeReset" text="Agencies">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="368.0" prefWidth="594.0">
+              <AnchorPane  minHeight="0.0" minWidth="0.0" onMouseMoved="#clearMsg" prefHeight="368.0" prefWidth="594.0">
                      <children>
                         <Label fx:id="toplblAgencyId" layoutX="129.0" layoutY="8.0" prefHeight="26.0" prefWidth="118.0" text="Agency ID :" AnchorPane.bottomAnchor="332.0" AnchorPane.leftAnchor="129.0" AnchorPane.topAnchor="8.0">
                            <font>
@@ -365,5 +365,20 @@ Base skeleton created by Wade Grimm
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
+      <Label fx:id="lblAllFields" layoutX="28.0" layoutY="426.0" prefHeight="18.0" prefWidth="182.0" text="All fields are requireds as input" textFill="#128c20f2" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblRes" layoutX="28.0" layoutY="417.0" prefHeight="18.0" prefWidth="305.0" text="Label" textFill="#0c841af2" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblError" layoutX="40.0" layoutY="427.0" prefHeight="18.0" prefWidth="242.0" text="Label" textFill="#df1515" visible="false">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

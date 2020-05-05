@@ -132,7 +132,7 @@ public class AgentDetail extends AppCompatActivity {
     }
 
     private void addAgent(JSONObject data) {
-        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/putagent";
+        String url = "http://192.168.0.23:8080/Workshop7-1/rs/agent/putagent";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         // Enter the correct url for your api service site
@@ -155,7 +155,7 @@ public class AgentDetail extends AppCompatActivity {
 
 
     private void updateAgent(JSONObject data) {
-        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/postagent";
+        String url = "http://192.168.0.23:8080/Workshop7-1/rs/agent/postagent";
         //setup the request queue
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -179,7 +179,7 @@ public class AgentDetail extends AppCompatActivity {
     }
 
     private void deleteAgent(int agentId) {
-        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/deleteagent/" + agentId;
+        String url = "http://192.168.0.23:8080/Workshop7-1/rs/agent/deleteagent/" + agentId;
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         // Enter the correct url for your api service site

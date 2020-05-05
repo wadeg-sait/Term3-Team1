@@ -6,6 +6,8 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,9 +19,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class AgencyController {
+
+    @FXML
+    private AnchorPane mainPage;
 
     @FXML
     private ResourceBundle resources;
@@ -131,6 +137,17 @@ public class AgencyController {
     private Tab tabAgent;
 
 
+    @FXML
+    private Label lblAllFields;
+
+
+    @FXML
+    private Label lblRes;
+
+    @FXML
+    private Label lblError;
+
+
 
 
     @FXML
@@ -150,6 +167,8 @@ public class AgencyController {
 
     @FXML
     void addAgt() {
+
+        lblAllFields.setVisible(false);
         txtAgtFirstName.setText("");
         txtAgtMiddleName.setText("");
         txtAgtLastName.setText("");
@@ -157,7 +176,7 @@ public class AgencyController {
         txtAgtEmail.setText("");
         txtAgtPhone.setText("");
         txtAgtId.setText("");
-
+        comboAgency.setDisable(true);
         txtAgtFirstName.setEditable(true);
         txtAgtLastName.setEditable((true));
         txtAgtMiddleName.setEditable(true);
@@ -178,11 +197,16 @@ public class AgencyController {
         txtAgtAgencyID.getItems().clear();
         txtAgtAgencyID.getItems().addAll(agenList);
         txtAgtAgencyID.getSelectionModel().selectFirst();
+       lstAgt.setDisable(true);
+        lblRes.setText("");
+        lblRes.setVisible(false);
+        lblError.setVisible(false);
+        lblError.setText("");
     }
 
     @FXML
     void  editAgt() {
-
+        lblAllFields.setVisible(false);
         txtAgtFirstName.setEditable(true);
         txtAgtLastName.setEditable((true));
         txtAgtMiddleName.setEditable(true);
@@ -207,7 +231,12 @@ public class AgencyController {
         txtAgtAgencyID.getSelectionModel().selectFirst();
         reset.setVisible(true);
         txtAgtAgencyID.getSelectionModel().select(Integer.parseInt(String.valueOf(comboAgency.getSelectionModel().getSelectedIndex())));
-
+        lstAgt.setDisable(true);
+        comboAgency.setDisable(true);
+        lblRes.setText("");
+        lblRes.setVisible(false);
+        lblError.setVisible(false);
+        lblError.setText("");
     }
 
     @FXML
@@ -215,6 +244,31 @@ public class AgencyController {
 
         if(txtAgtFirstName.getText().isEmpty()||txtAgtMiddleName.getText().isEmpty()||txtAgtLastName.getText().isEmpty()
         ||txtAgtPhone.getText().isEmpty()||txtAgtEmail.getText().isEmpty()||txtAgtPosition.getText().isEmpty()){
+            lblAllFields.setVisible(true);
+            return;
+        }
+        Pattern patternPhone= Pattern.compile("^\\(?([0-9]{3})\\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$");
+        Matcher matcherPhone= patternPhone.matcher(txtAgtPhone.getText());
+
+        if(matcherPhone.matches()==false)
+        {
+            System.out.println("Invalid Phone");
+            lblError.setVisible(true);
+            lblError.setText("");
+            lblError.setText("Invalid Phone Number");
+            return;
+        }
+
+
+        Pattern patternEmail = Pattern.compile("^(.+)@(.+)$");
+        Matcher matcherEmail = patternEmail.matcher(txtAgtEmail.getText());
+
+        if(matcherEmail.matches()==false)
+        {
+            System.out.println("Invalid Email");
+            lblError.setVisible(true);
+            lblError.setText("");
+            lblError.setText("Invalid Email Address");
             return;
         }
 
@@ -237,6 +291,8 @@ public class AgencyController {
         lblAgtAgencyID.setVisible(false);
         txtAgtAgencyID.setVisible(false);
         reset.setVisible(false);
+        lstAgt.setDisable(false);
+        comboAgency.setDisable(false);
 
 
 
@@ -265,6 +321,11 @@ public class AgencyController {
         }
 
         initialize();
+        lblRes.setText("");
+        lblRes.setVisible(true);
+        lblRes.setText(("Agents have been added"));
+        lblError.setVisible(false);
+        lblError.setText("");
 
     }
     @FXML
@@ -273,7 +334,35 @@ public class AgencyController {
         if(txtAgtFirstName.getText().isEmpty()||txtAgtMiddleName.getText().isEmpty()||txtAgtLastName.getText().isEmpty()
                 ||txtAgtPhone.getText().isEmpty()||txtAgtEmail.getText().isEmpty()||txtAgtPosition.getText().isEmpty()){
 
-            System.out.println("cannot be null");
+            lblAllFields.setVisible(true);
+            return;
+        }
+
+
+
+
+        Pattern patternPhone= Pattern.compile("^\\(?([0-9]{3})\\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$");
+        Matcher matcherPhone= patternPhone.matcher(txtAgtPhone.getText());
+
+        if(matcherPhone.matches()==false)
+            {
+            System.out.println("Invalid Phone");
+                lblError.setVisible(true);
+                lblError.setText("");
+                lblError.setText("Invalid Phone Number");
+            return;
+        }
+
+
+        Pattern patternEmail = Pattern.compile("^(.+)@(.+)$");
+        Matcher matcherEmail = patternEmail.matcher(txtAgtEmail.getText());
+
+        if(matcherEmail.matches()==false)
+        {
+            System.out.println("Invalid Email");
+            lblError.setVisible(true);
+            lblError.setText("");
+            lblError.setText("Invalid Email Address");
             return;
         }
 
@@ -296,6 +385,8 @@ public class AgencyController {
         lblAgtAgencyID.setVisible(false);
         txtAgtAgencyID.setVisible(false);
         reset.setVisible(false);
+        lstAgt.setDisable(false);
+        comboAgency.setDisable(false);
 
 
 
@@ -324,6 +415,11 @@ public class AgencyController {
         }
 
         initialize();
+        lblRes.setText("");
+        lblRes.setVisible(true);
+        lblRes.setText(("Agents have been Edited"));
+        lblError.setVisible(false);
+        lblError.setText("");
 
     }
 
@@ -332,7 +428,7 @@ public class AgencyController {
 
     @FXML
     void addAgency() {
-
+        lblAllFields.setVisible(false);
         btnAgencyAdd.setVisible(false);
         btnAgencyEdit.setVisible(false);
         btnAgencyAddSave.setVisible(true);
@@ -357,12 +453,18 @@ public class AgencyController {
         toplblAgencyId.setVisible(false);
         comboAgencyID.setVisible(false);
         reset.setVisible(true);
+        lstAgt.setDisable(false);
+        comboAgency.setDisable(false);
+        lblRes.setText("");
+        lblRes.setVisible(false);
+        lblError.setVisible(false);
+        lblError.setText("");
 
     }
 
     @FXML
     void editAgency() {
-
+        lblAllFields.setVisible(false);
         btnAgencyAdd.setVisible(false);
         btnAgencyEdit.setVisible(false);
         btnAgencyAddSave.setVisible(false);
@@ -382,6 +484,12 @@ public class AgencyController {
         comboAgencyID.setVisible(false);
         toplblAgencyId.setVisible(false);
         reset.setVisible(true);
+        lstAgt.setDisable(false);
+        comboAgency.setDisable(false);
+        lblRes.setText("");
+        lblRes.setVisible(false);
+        lblError.setVisible(false);
+        lblError.setText("");
 
 
     }
@@ -392,6 +500,54 @@ public class AgencyController {
     @FXML
     void saveAddAgency() {
 
+
+        if(txtAgencyAddress.getText().isEmpty() || txtAgencyCity.getText().isEmpty() || txtAgencyCountry.getText().isEmpty()  || txtAgencyProv.getText().isEmpty()
+                || txtAgencyPhone.getText().isEmpty() ||txtAgencyFax.getText().isEmpty() ||txtAgencyPost.getText().isEmpty() ){
+
+            lblAllFields.setVisible(true);
+            return ;
+
+        }
+
+
+        Pattern patternPostal = Pattern.compile("^[ABCEGHJKLMNPRSTVXYabceghjklmnprstvxy]{1}\\d{1}[A-Za-z]{1}[ ]{0,1}\\d{1}[A-Za-z]{1}\\d{1}$");
+        Matcher matcherPostal = patternPostal.matcher(txtAgencyPost.getText());
+
+        if(matcherPostal.matches()==false)
+        {
+            System.out.println("Invalid Postal Code");
+            lblError.setVisible(true);
+            lblError.setText("");
+            lblError.setText("Invalid Postal Code");
+            return;
+        }
+
+        Pattern patternPhone= Pattern.compile("^\\(?([0-9]{3})\\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$");
+        Matcher matcherPhone= patternPhone.matcher(txtAgencyPhone.getText());
+
+        if(matcherPhone.matches()==false)
+        {
+            System.out.println("Invalid Agency Phone");
+            lblError.setVisible(true);
+            lblError.setText("");
+            lblError.setText("Invalid Phone Number");
+            return;
+        }
+
+
+        Pattern patternFax= Pattern.compile("^\\(?([0-9]{3})\\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$");
+        Matcher matcherFax= patternFax  .matcher(txtAgencyFax.getText());
+
+        if(matcherFax.matches()==false)
+        {
+            System.out.println("Invalid Agency Fax");
+            lblError.setVisible(true);
+            lblError.setText("");
+            lblError.setText("Invalid Fax Number");
+            return;
+        }
+
+
         btnAgencyAdd.setVisible(true);
         btnAgencyEdit.setVisible(true);
         btnAgencyAddSave.setVisible(false);
@@ -400,13 +556,6 @@ public class AgencyController {
         reset.setVisible(false);
         lblAgencyID.setVisible(false);
         txtAgencyID.setEditable(false);
-        if(txtAgencyAddress.getText().isEmpty() || txtAgencyCity.getText().isEmpty() || txtAgencyCountry.getText().isEmpty()  || txtAgencyProv.getText().isEmpty()
-                || txtAgencyPhone.getText().isEmpty() ||txtAgencyFax.getText().isEmpty() ||txtAgencyPost.getText().isEmpty() ){
-
-            System.out.println("Cannot Add Return");
-            return ;
-
-        }
         System.out.println("Adding");
         txtAgencyAddress.setEditable(false);
         txtAgencyCity.setEditable(false);
@@ -419,6 +568,8 @@ public class AgencyController {
         comboAgencyID.setVisible(true);
         toplblAgencyId.setVisible(true);
         reset.setVisible(false);
+        lstAgt.setDisable(false);
+        comboAgency.setDisable(false);
 
         try{
             Connection conn  = MyDBConnection.getConnectionString();
@@ -444,6 +595,12 @@ public class AgencyController {
         }
 
         initialize();
+        lblRes.setText("");
+        lblRes.setVisible(true);
+        lblRes.setText(("Agency have been Added"));
+        lblError.setVisible(false);
+        lblError.setText("");
+
 
 
 
@@ -454,9 +611,47 @@ public class AgencyController {
         if(txtAgencyAddress.getText().isEmpty() || txtAgencyCity.getText().isEmpty() || txtAgencyCountry.getText().isEmpty()  || txtAgencyProv.getText().isEmpty()
                 || txtAgencyPhone.getText().isEmpty() ||txtAgencyFax.getText().isEmpty() ||txtAgencyPost.getText().isEmpty() ){
 
-            System.out.println("Cannot Add Return");
+            lblAllFields.setVisible(true);
             return ;
 
+        }
+
+
+        Pattern patternPostal = Pattern.compile("^[ABCEGHJKLMNPRSTVXYabceghjklmnprstvxy]{1}\\d{1}[A-Za-z]{1}[ ]{0,1}\\d{1}[A-Za-z]{1}\\d{1}$");
+        Matcher matcherPostal = patternPostal.matcher(txtAgencyPost.getText());
+
+        if(matcherPostal.matches()==false)
+        {
+            System.out.println("Invalid Postal Code");
+            lblError.setVisible(true);
+            lblError.setText("");
+            lblError.setText("Invalid Postal Code");
+            return;
+        }
+
+        Pattern patternPhone= Pattern.compile("^\\(?([0-9]{3})\\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$");
+        Matcher matcherPhone= patternPhone.matcher(txtAgencyPhone.getText());
+
+        if(matcherPhone.matches()==false)
+        {
+            System.out.println("Invalid Agency Phone");
+            lblError.setVisible(true);
+            lblError.setText("");
+            lblError.setText("Invalid Phone Number");
+            return;
+        }
+
+
+        Pattern patternFax= Pattern.compile("^\\(?([0-9]{3})\\)?[-.●]?([0-9]{3})[-.●]?([0-9]{4})$");
+        Matcher matcherFax= patternFax  .matcher(txtAgencyFax.getText());
+
+        if(matcherFax.matches()==false)
+        {
+            System.out.println("Invalid Agency Fax");
+            lblError.setVisible(true);
+            lblError.setText("");
+            lblError.setText("Invalid Fax Number");
+            return;
         }
 
 
@@ -505,14 +700,19 @@ public class AgencyController {
         toplblAgencyId.setVisible(true);
         reset.setVisible(false);
         comboAgencyID.getSelectionModel().selectFirst();
-
+        lstAgt.setDisable(false);
         getAgencyDetails();
+        lblRes.setText("");
+        lblRes.setVisible(true);
+        lblRes.setText(("Agency have been Edited"));
+        lblError.setVisible(false);
+        lblError.setText("");
 
     }
 
     @FXML
     void reset() {
-
+        lblAllFields.setVisible(false);
        btnAgencyAdd.setVisible(true);
         btnAgencyEdit.setVisible(true);
         btnAgencyAddSave.setVisible(false);
@@ -536,7 +736,7 @@ public class AgencyController {
         comboAgencyID.getSelectionModel().selectFirst();
         getAgencyDetails();
         displayAgentDetails();
-
+        lstAgt.setDisable(false);
         txtAgtFirstName.setEditable(false);
         txtAgtLastName.setEditable((false));
         txtAgtMiddleName.setEditable(false);
@@ -553,16 +753,17 @@ public class AgencyController {
         btnAgtEditSave.setVisible(false);
         toplblAgt.setVisible(true);
         txtAgtId.setVisible(true);
-
-
-
-
+        comboAgency.setDisable(false);
+        lblRes.setText("");
+        lblRes.setVisible(false);
+        lblError.setVisible(false);
+        lblError.setText("");
 
     }
 
     @FXML
     private  void tabChangeReset (){
-
+        lblAllFields.setVisible(false);
         btnAgencyAdd.setVisible(true);
         btnAgencyEdit.setVisible(true);
         btnAgencyAddSave.setVisible(false);
@@ -585,7 +786,8 @@ public class AgencyController {
         toplblAgencyId.setVisible(true);
         comboAgencyID.getSelectionModel().selectFirst();
         getAgencyDetails();
-
+        displayAgentDetails();
+        lstAgt.setDisable(false);
         txtAgtFirstName.setEditable(false);
         txtAgtLastName.setEditable((false));
         txtAgtMiddleName.setEditable(false);
@@ -602,6 +804,11 @@ public class AgencyController {
         btnAgtEditSave.setVisible(false);
         toplblAgt.setVisible(true);
         txtAgtId.setVisible(true);
+        comboAgency.setDisable(false);
+        lblRes.setText("");
+        lblRes.setVisible(false);
+        lblError.setVisible(false);
+        lblError.setText("");
 
     }
 
@@ -621,15 +828,19 @@ public class AgencyController {
     @FXML
     private  void selectedAgency (ActionEvent event){
 
-
+        lblAllFields.setVisible(false);
         getAgencyDetails();
-
+        lstAgt.setDisable(false);
+        lblRes.setText("");
+        lblRes.setVisible(false);
+        lblError.setVisible(false);
+        lblError.setText("");
     }
 
 
     @FXML
     private  void  SelectAgencyAgent (ActionEvent event){
-
+        lblAllFields.setVisible(false);
         txtAgtFirstName.setEditable(false);
         txtAgtLastName.setEditable((false));
         txtAgtMiddleName.setEditable(false);
@@ -660,6 +871,10 @@ public class AgencyController {
         lstAgt.getSelectionModel().selectFirst();
 
         displayAgentDetails();
+        lblRes.setText("");
+        lblRes.setVisible(false);
+        lblError.setVisible(false);
+        lblError.setText("");
 
 
 
@@ -672,6 +887,18 @@ public class AgencyController {
         Integer lstAgent= Integer.parseInt(String.valueOf(lstAgt.getSelectionModel().getSelectedIndex()));
 
         getSelectedAgentDetails(lstAgent);
+        lblRes.setText("");
+        lblRes.setVisible(false);
+        lblError.setVisible(false);
+        lblError.setText("");
+
+    }
+
+
+    @FXML
+    void clearMsg(MouseEvent event) {
+        lblRes.setText("");
+        lblRes.setVisible(false);
     }
 
 
@@ -713,6 +940,11 @@ public class AgencyController {
         assert toplblAgencyId != null : "fx:id=\"toplblAgencyId\" was not injected: check your FXML file 'agents.fxml'.";
         assert tabAgent != null : "fx:id=\"tabAgent\" was not injected: check your FXML file 'agents.fxml'.";
         assert tabAgency != null : "fx:id=\"tabAgency\" was not injected: check your FXML file 'agents.fxml'.";
+        assert lblAllFields != null : "fx:id=\"lblAllFields\" was not injected: check your FXML file 'agents.fxml'.";
+        assert lblRes != null : "fx:id=\"lblRes\" was not injected: check your FXML file 'agents.fxml'.";
+        assert lblError != null : "fx:id=\"lblError\" was not injected: check your FXML file 'agents.fxml'.";
+        assert mainPage != null : "fx:id=\"mainPage\" was not injected: check your FXML file 'agents.fxml'.";
+
 
         agenList.removeAll(agenList);
         ArrayList<Integer> agencyList=  getAgencyList();
@@ -813,7 +1045,10 @@ public class AgencyController {
         }
         agentList.addAll(agentName);
         lstAgt.getItems().addAll(agentList);
-
+        lblRes.setText("");
+        lblRes.setVisible(false);
+        lblError.setVisible(false);
+        lblError.setText("");
 
 
 

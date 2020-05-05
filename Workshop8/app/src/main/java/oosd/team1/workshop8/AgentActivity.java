@@ -87,7 +87,7 @@ public class AgentActivity extends AppCompatActivity {
     // we use Volley to request, receive the JSON data from the server
     private void loadAgentData() {
         //lvAgents.setAdapter(null);
-        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/getallagents";
+        String url = "http://192.168.0.23:8080/Workshop7-1/rs/agent/getallagents";
         //setup the request - it requires the method (Get, Post), URL, any parameters that need to be sent, a listener object and listener error object
         //setup the request queue
         RequestQueue requestQueue = Volley.newRequestQueue(this);
