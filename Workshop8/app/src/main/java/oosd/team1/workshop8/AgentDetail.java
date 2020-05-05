@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -21,19 +21,20 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.gson.Gson;
-import com.google.gson.JsonObject;
+
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import oosd.team1.workshop8.Agent;
+import java.util.ArrayList;
+
 
 // class to get individual details of the agent that was clicked
 public class AgentDetail extends AppCompatActivity {
     // setup buttons and text fields
     EditText etAgentId, etAgtFirstName, etAgtMiddleInitial, etAgtLastName, etAgtEmail, etAgtBusPhone, etAgtPosition, etAgencyID;
     Button btnSave, btnCancel, btnDelete;
+    ArrayList<EditText> etControls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class AgentDetail extends AppCompatActivity {
         etAgtEmail = findViewById(R.id.etAgtEmail);
         etAgtPosition = findViewById(R.id.etAgtPosition);
         etAgencyID = findViewById(R.id.etAgencyId);
-
+        etControls =  new ArrayList<EditText>(){{add(etAgtFirstName);add(etAgtLastName);add(etAgtEmail);add(etAgtBusPhone);add(etAgtPosition);add(etAgencyID);}};
 //state your intentions... Display the data
         Intent intent = getIntent();
         final String mode = intent.getStringExtra("mode");
@@ -65,38 +66,36 @@ public class AgentDetail extends AppCompatActivity {
             etAgtEmail.setText(a.getAgtEmail());
             etAgtPosition.setText(a.getAgtPosition());
             etAgencyID.setText(String.valueOf(a.getAgencyId()));
-        } else if (mode.equals("Add")) {
-            //btnSave.setEnabled(false);
         }
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                JSONObject json = new JSONObject();
-                //Gson json = new Gson();
-                Agent obj = new Agent();
-                try {
-                    if (mode.equals("update")) {
-                        json.put("agentId", Integer.parseInt(etAgentId.getText().toString()));
+                if (validateFields()) {
+                    JSONObject json = new JSONObject();
+                    try {
+                        if (mode.equals("update")) {
+                            json.put("agentId", Integer.parseInt(etAgentId.getText().toString()));
+                        }
+                        json.put("agtFirstName", etAgtFirstName.getText().toString());
+                        json.put("agtMiddleInitial", etAgtMiddleInitial.getText().toString());
+                        json.put("agtLastName", etAgtLastName.getText().toString());
+                        json.put("agtBusPhone", etAgtBusPhone.getText().toString());
+                        json.put("agtEmail", etAgtEmail.getText().toString());
+                        json.put("agtPosition", etAgtPosition.getText().toString());
+                        json.put("agencyId", Integer.parseInt(etAgencyID.getText().toString()));
+                        //String data = json.toJson(obj);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                    json.put("agtFirstName", etAgtFirstName.getText().toString());
-                    json.put("agtMiddleInitial", etAgtMiddleInitial.getText().toString());
-                    json.put("agtLastName", etAgtLastName.getText().toString());
-                    json.put("agtBusPhone", etAgtBusPhone.getText().toString());
-                    json.put("agtEmail", etAgtEmail.getText().toString());
-                    json.put("agtPosition", etAgtPosition.getText().toString());
-                    json.put("agencyId", Integer.parseInt(etAgencyID.getText().toString()));
-                    //String data = json.toJson(obj);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                if (mode.equals("update")) {
-                    updateAgent(json);
-                    Toast.makeText(getApplicationContext(), "Record edited.", Toast.LENGTH_LONG).show();
-                    onBackPressed();
-                } else {
-                    addAgent(json);
-                    Toast.makeText(getApplicationContext(), "Agent added.", Toast.LENGTH_LONG).show();
-                    onBackPressed();
+                    if (mode.equals("update")) {
+                        updateAgent(json);
+                        Toast.makeText(getApplicationContext(), "Record edited.", Toast.LENGTH_LONG).show();
+                        onBackPressed();
+                    } else {
+                        addAgent(json);
+                        Toast.makeText(getApplicationContext(), "Agent added.", Toast.LENGTH_LONG).show();
+                        onBackPressed();
+                    }
                 }
             }
         });
@@ -124,15 +123,36 @@ public class AgentDetail extends AppCompatActivity {
             }
         });
     }
-
-
-    // is there anything in the field?
-    private boolean isEmpty(EditText editText) {
-        return editText.getText().toString().trim().length() == 0;
+    private boolean validateFields() {
+        int badInput=0;
+        for (EditText et : etControls) {
+            if(et == etAgtMiddleInitial) {
+                if (etAgtMiddleInitial.getText().length() > 1) {
+                    etAgtMiddleInitial.setError("Middle Initial can be only 1 character");
+                    badInput++;
+                }
+            }else if (et.getText().toString().trim().length() == 0){
+                et.setError("Field cannot be empty");
+                badInput++;
+            }
+        }
+        if(badInput==0){
+            return true;
+        }else{
+            return false;
+        }
     }
 
+    // is there anything in the field?
+//    private boolean isEmpty(EditText editText) {
+//        for (EditText et : etControls) {
+//
+//        }
+//        //return editText.getText().toString().trim().length() == 0;
+//    }
+
     private void addAgent(JSONObject data) {
-        String url = "http://192.168.0.23:8080/Workshop7-1/rs/agent/putagent";
+        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/putagent";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         // Enter the correct url for your api service site
@@ -155,7 +175,7 @@ public class AgentDetail extends AppCompatActivity {
 
 
     private void updateAgent(JSONObject data) {
-        String url = "http://192.168.0.23:8080/Workshop7-1/rs/agent/postagent";
+        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/postagent";
         //setup the request queue
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -179,7 +199,7 @@ public class AgentDetail extends AppCompatActivity {
     }
 
     private void deleteAgent(int agentId) {
-        String url = "http://192.168.0.23:8080/Workshop7-1/rs/agent/deleteagent/" + agentId;
+        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/deleteagent/" + agentId;
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         // Enter the correct url for your api service site
