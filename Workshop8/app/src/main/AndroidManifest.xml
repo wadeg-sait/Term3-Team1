@@ -16,8 +16,10 @@ Added items to allow REST server usage
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AgentDetail"></activity>
-        <activity android:name=".ExtraActivity"></activity>
+        <activity android:name=".AgentDetail"/>
+        <activity android:name=".ExtraActivity" />
+        <activity android:name=".CustomerActivity" />
+        <activity android:name=".CustomerDetail" />
         <activity android:name=".AgentActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

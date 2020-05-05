@@ -87,12 +87,11 @@ public class AgentActivity extends AppCompatActivity {
     // we use Volley to request, receive the JSON data from the server
     private void loadAgentData() {
         //lvAgents.setAdapter(null);
-        String url = "http://10.10.63.176:8080/Workshop7-1/rs/agent/getallagents";
+        String url = "http://10.0.0.131:8080/Workshop7-1/rs/agent/getallagents";
         //setup the request - it requires the method (Get, Post), URL, any parameters that need to be sent, a listener object and listener error object
         //setup the request queue
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        JsonArrayRequest objectRequest = new JsonArrayRequest(Request.Method.GET, url, null,
-                new Response.Listener<JSONArray>() {
+        JsonArrayRequest objectRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         // we receive the data back as a JSON Array, so we need to break it down to JSON Objects and then again into the Agent Objects
