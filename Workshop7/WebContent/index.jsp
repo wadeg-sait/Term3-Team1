@@ -18,7 +18,7 @@
 
 
 body {
-      background-image: url("imgs/bg-masthead.jpg");
+      background-image: url("imgs/background1.jpg");
 
       color: black;
       font-family: "Quicksand", sans-serif;
@@ -98,25 +98,20 @@ body {
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
-        
-        	<div class="item active">
-            <img src="imgs/andriod7.jpg" alt="image1" />
-          </div>
-          
-          <div class="item">
-            <img src="imgs/cool.jpeg" alt="image2" />
-          </div>
-          
-        	<div class="item">
-           <img src="imgs/andriod5.jpg" alt="image3" />
+          <div class="item active">
+            <img src="imgs/Caribbean New Year.jpg" alt="image1" />
           </div>
 
           <div class="item">
-            <img src="imgs/andriod4.jpg" alt="image4" />
+            <img src="imgs/Polynesian Paradise.jpg" alt="image2" />
           </div>
 
           <div class="item">
-            <img src="imgs/web1.jpg" alt="image5" />
+            <img src="imgs/Asian Expedition.jpg" alt="image3" />
+          </div>
+
+          <div class="item">
+            <img src="imgs/European Vacation.jpg" alt="image4" />
           </div>
         </div>
 
