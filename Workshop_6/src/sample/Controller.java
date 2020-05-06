@@ -29,6 +29,9 @@ public class Controller {
     private Button btnBookings;
 
     @FXML
+    private Button btnRewards;
+
+    @FXML
     void clickedAgents(ActionEvent event) throws IOException {
         Parent stage = FXMLLoader.load(getClass().getResource("agents.fxml"));
         Scene scene = new Scene((stage));
@@ -63,6 +66,14 @@ public class Controller {
 
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(scene);
+
+        @FXML
+        void clickedSuppliers(ActionEvent event) throws IOException {
+            Parent stage = FXMLLoader.load(getClass().getResource("rewards.fxml"));
+            Scene scene = new Scene((stage));
+
+            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+            window.setScene(scene);
 
     }
 
