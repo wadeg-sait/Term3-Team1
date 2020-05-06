@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_bookingedit">
+
+    <TextView
+        android:id="@+id/titleBookingDetails"
+        android:layout_width="376dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:clickable="false"
+        android:focusable="false"
+        android:text="BOOKING DETAILS"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/lbleditText"
+        android:layout_width="122dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="#00000000"
+        android:clickable="false"
+        android:ems="12"
+        android:focusable="false"
+        android:text="Booking ID :"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleBookingDetails" />
+
+    <EditText
+        android:id="@+id/txtEditBookingID"
+        android:layout_width="230dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:ems="10"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/lbleditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/lbleditText"
+        app:layout_constraintTop_toBottomOf="@+id/titleBookingDetails" />
+
+
+    <EditText
+        android:id="@+id/lbleditText3"
+        android:layout_width="122dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="#00000000"
+        android:clickable="false"
+        android:ems="12"
+        android:focusable="false"
+        android:text="Booking No:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbleditText" />
+
+    <EditText
+        android:id="@+id/txtEditBookingNo"
+        android:layout_width="230dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/lbleditText3"
+        app:layout_constraintEnd_toEndOf="@+id/txtEditBookingID"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/lbleditText3" />
+
+    <EditText
+        android:id="@+id/lbleditText5"
+        android:layout_width="122dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="#00000000"
+        android:clickable="false"
+        android:ems="12"
+        android:focusable="false"
+        android:text="Traveler Count:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbleditText3" />
+
+    <EditText
+        android:id="@+id/txtEditTravellerCount"
+        android:layout_width="230dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="4dp"
+        android:ems="10"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/lbleditText5"
+        app:layout_constraintEnd_toEndOf="@+id/txtEditBookingNo"
+        app:layout_constraintStart_toEndOf="@+id/lbleditText5" />
+
+    <EditText
+        android:id="@+id/lbleditText7"
+        android:layout_width="122dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="#00000000"
+        android:clickable="false"
+        android:ems="12"
+        android:focusable="false"
+        android:text="Customer ID:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbleditText5" />
+
+    <EditText
+        android:id="@+id/txtEditCustomerId"
+        android:layout_width="230dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/lbleditText7"
+        app:layout_constraintEnd_toEndOf="@+id/txtEditTravellerCount"
+        app:layout_constraintStart_toEndOf="@+id/lbleditText7" />
+
+    <EditText
+        android:id="@+id/lbleditText10"
+        android:layout_width="122dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="#00000000"
+        android:clickable="false"
+        android:ems="12"
+        android:focusable="false"
+        android:text="Trip Type ID:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbleditText7" />
+
+    <EditText
+        android:id="@+id/txtEditTripTypeId"
+        android:layout_width="230dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/lbleditText10"
+        app:layout_constraintEnd_toEndOf="@+id/txtEditCustomerId"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/lbleditText10" />
+
+    <EditText
+        android:id="@+id/lbleditText11"
+        android:layout_width="122dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:background="#00000000"
+        android:clickable="false"
+        android:ems="12"
+        android:focusable="false"
+        android:text="Package ID :"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbleditText10" />
+
+    <EditText
+        android:id="@+id/txtEditPackageId"
+        android:layout_width="230dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:ems="10"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/lbleditText11"
+        app:layout_constraintEnd_toEndOf="@+id/txtEditTripTypeId"
+        app:layout_constraintStart_toEndOf="@+id/lbleditText11" />
+
+    <Button
+        android:id="@+id/btnSaveEditBooking"
+        android:layout_width="163dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="56dp"
+        android:backgroundTint="#009688"
+        android:scrollbars="vertical"
+        android:text="Save EDIT"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbleditText11" />
+
+    <Button
+        android:id="@+id/btnEditBooking"
+        android:layout_width="163dp"
+        android:layout_height="54dp"
+        android:layout_marginBottom="60dp"
+        android:backgroundTint="#009688"
+        android:scrollbars="vertical"
+        android:text="EDIT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnSaveEditBooking"
+        app:layout_constraintStart_toStartOf="@+id/btnSaveEditBooking"
+        app:layout_constraintTop_toBottomOf="@+id/btnSaveEditBooking"
+        app:layout_constraintVertical_bias="0.36" />
+
+    <Button
+        android:id="@+id/btnCancelEditBooking"
+        android:layout_width="161dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="32dp"
+        android:background="#D53255"
+        android:text="Cancel EDIT"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSaveEditBooking"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btnSaveEditBooking"
+        app:layout_constraintTop_toTopOf="@+id/btnSaveEditBooking"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btnDeleteBooking"
+        android:layout_width="161dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="68dp"
+        android:background="#D53255"
+        android:text="DELETE"
+        app:layout_constraintBottom_toBottomOf="@+id/btnEditBooking"
+        app:layout_constraintEnd_toEndOf="@+id/btnCancelEditBooking"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btnEditBooking"
+        app:layout_constraintTop_toTopOf="@+id/btnCancelEditBooking" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
