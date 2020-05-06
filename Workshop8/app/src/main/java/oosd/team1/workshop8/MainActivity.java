@@ -50,12 +50,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //Toast.makeText(this, "Load Agents", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnBookings:
-                // do something
+                 openActivity(activity_bookingslist.class);
                 Toast.makeText(this, "Load Bookings", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnCustomers:
                 // do something
-                Toast.makeText(this, "Load Customers", Toast.LENGTH_SHORT).show();
+                openActivity(CustomerActivity.class);
+                //Toast.makeText(this, "Load Customers", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnSuppliers:
                 // do something
@@ -65,8 +66,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // do something
                 Toast.makeText(this, "Load Extras", Toast.LENGTH_SHORT).show();
                 break;
-
-
         }
     }
 

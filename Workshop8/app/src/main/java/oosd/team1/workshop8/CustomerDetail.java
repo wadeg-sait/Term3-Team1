@@ -1,5 +1,5 @@
 /*
- * Created by Wade Grimm
+ * Created by Muhammad Khalil
  *
  * */
 
@@ -30,42 +30,41 @@ import java.util.ArrayList;
 
 
 // class to get individual details of the agent that was clicked
-public class AgentDetail extends AppCompatActivity {
+public class CustomerDetail extends AppCompatActivity {
     // setup buttons and text fields
-    EditText etAgentId, etAgtFirstName, etAgtMiddleInitial, etAgtLastName, etAgtEmail, etAgtBusPhone, etAgtPosition, etAgencyID;
+    EditText etCustomerId, etCustFirstName, etCustLastName, etCustAddress, etCustCity, etCustHomePhone, etCustEmail;
     Button btnSave, btnCancel, btnDelete;
     ArrayList<EditText> etControls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agent_detail);
+        setContentView(R.layout.activity_customer_detail);
 //set references to said buttons and text fields
         btnSave = findViewById(R.id.btnSave);
         btnCancel = findViewById(R.id.btnCancel);
         btnDelete = findViewById(R.id.btnDelete);
-        etAgentId = findViewById(R.id.etAgentId);
-        etAgtFirstName = findViewById(R.id.etAgtFirstName);
-        etAgtMiddleInitial = findViewById(R.id.etAgtMiddleInitial);
-        etAgtLastName = findViewById(R.id.etAgtLastName);
-        etAgtBusPhone = findViewById(R.id.etAgtBusPhone);
-        etAgtEmail = findViewById(R.id.etAgtEmail);
-        etAgtPosition = findViewById(R.id.etAgtPosition);
-        etAgencyID = findViewById(R.id.etAgencyId);
-        etControls =  new ArrayList<EditText>(){{add(etAgtFirstName);add(etAgtLastName);add(etAgtEmail);add(etAgtBusPhone);add(etAgtPosition);add(etAgencyID);}};
+        etCustomerId = findViewById(R.id.etCustomerId);
+        etCustFirstName = findViewById(R.id.etCustFirstName);
+        etCustLastName = findViewById(R.id.etCustLastName);
+        etCustAddress = findViewById(R.id.etCustAddress);
+        etCustHomePhone = findViewById(R.id.etCustHomePhone);
+        etCustCity = findViewById(R.id.etCustCity);
+        etCustEmail = findViewById(R.id.etCustEmail);
+
+        etControls =  new ArrayList<EditText>(){{add(etCustFirstName);add(etCustAddress);add(etCustCity);add(etCustHomePhone);add(etCustEmail);}};
 //state your intentions... Display the data
         Intent intent = getIntent();
         final String mode = intent.getStringExtra("mode");
         if (mode.equals("update")) {
-            Agent a = (Agent) intent.getSerializableExtra("agent");
-            etAgentId.setText(String.valueOf(a.getAgentId()));
-            etAgtFirstName.setText(a.getAgtFirstName());
-            etAgtMiddleInitial.setText(a.getAgtMiddleInitial());
-            etAgtLastName.setText(a.getAgtLastName());
-            etAgtBusPhone.setText(a.getAgtBusPhone());
-            etAgtEmail.setText(a.getAgtEmail());
-            etAgtPosition.setText(a.getAgtPosition());
-            etAgencyID.setText(String.valueOf(a.getAgencyId()));
+            Customer a = (Customer) intent.getSerializableExtra("customer");
+            etCustomerId.setText(String.valueOf(a.getCustomerId()));
+            etCustFirstName.setText(a.getCustFirstName());
+            etCustLastName.setText(a.getCustLastName());
+            etCustAddress.setText(a.getCustAddress());
+            etCustHomePhone.setText(a.getCustHomePhone());
+            etCustCity.setText(a.getCustCity());
+            etCustEmail.setText(a.getCustEmail());
         }
 
         btnSave.setOnClickListener(new View.OnClickListener() {
@@ -84,26 +83,25 @@ public class AgentDetail extends AppCompatActivity {
                     JSONObject json = new JSONObject();
                     try {
                         if (mode.equals("update")) {
-                            json.put("agentId", Integer.parseInt(etAgentId.getText().toString()));
+                            json.put("CustomerId", Integer.parseInt(etCustomerId.getText().toString()));
                         }
-                        json.put("agtFirstName", etAgtFirstName.getText().toString());
-                        json.put("agtMiddleInitial", etAgtMiddleInitial.getText().toString());
-                        json.put("agtLastName", etAgtLastName.getText().toString());
-                        json.put("agtBusPhone", etAgtBusPhone.getText().toString());
-                        json.put("agtEmail", etAgtEmail.getText().toString());
-                        json.put("agtPosition", etAgtPosition.getText().toString());
-                        json.put("agencyId", Integer.parseInt(etAgencyID.getText().toString()));
+                        json.put("CustFirstName", etCustFirstName.getText().toString());
+                        json.put("CustLastName", etCustLastName.getText().toString());
+                        json.put("CustAddress", etCustAddress.getText().toString());
+                        json.put("CustHomePhone", etCustHomePhone.getText().toString());
+                        json.put("CustCity", etCustCity.getText().toString());
+                        json.put("CustEmail", etCustEmail.getText().toString());
                         //String data = json.toJson(obj);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                     if (mode.equals("update")) {
-                        updateAgent(json);
+                        updateCustomer(json);
                         Toast.makeText(getApplicationContext(), "Record edited.", Toast.LENGTH_LONG).show();
                         onBackPressed();
                     } else {
-                        addAgent(json);
-                        Toast.makeText(getApplicationContext(), "Agent added.", Toast.LENGTH_LONG).show();
+                        addCustomer(json);
+                        Toast.makeText(getApplicationContext(), "Customer added.", Toast.LENGTH_LONG).show();
                         onBackPressed();
                     }
                 }
@@ -122,9 +120,9 @@ public class AgentDetail extends AppCompatActivity {
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int agentId = Integer.parseInt(etAgentId.getText().toString());
-                if (agentId > 9) {
-                    deleteAgent(agentId);
+                int customerId = Integer.parseInt(etCustomerId.getText().toString());
+                if (customerId > 9) {
+                    deleteCustomer(customerId);
                     Toast.makeText(getApplicationContext(), "Record deleted.", Toast.LENGTH_LONG).show();
                     onBackPressed();
                 } else {
@@ -136,12 +134,7 @@ public class AgentDetail extends AppCompatActivity {
     private boolean validateFields() {
         int badInput=0;
         for (EditText et : etControls) {
-            if(et == etAgtMiddleInitial) {
-                if (etAgtMiddleInitial.getText().length() > 1) {
-                    etAgtMiddleInitial.setError("Middle Initial can be only 1 character");
-                    badInput++;
-                }
-            }else if (et.getText().toString().trim().length() == 0){
+            if (et.getText().toString().trim().length() == 0){
                 et.setError("Field cannot be empty");
                 badInput++;
             }
@@ -161,8 +154,8 @@ public class AgentDetail extends AppCompatActivity {
 //        //return editText.getText().toString().trim().length() == 0;
 //    }
 
-    private void addAgent(JSONObject data) {
-        String url = "http://10.0.0.131:8080/Workshop7-1/rs/agent/putagent";
+    private void addCustomer(JSONObject data) {
+        String url = "http://10.0.0.131:8080/Workshop7-1/rs/customers/postCustomer";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         // Enter the correct url for your api service site
@@ -184,8 +177,8 @@ public class AgentDetail extends AppCompatActivity {
     }
 
 
-    private void updateAgent(JSONObject data) {
-        String url = "http://10.0.0.131:8080/Workshop7-1/rs/agent/postagent";
+    private void updateCustomer(JSONObject data) {
+        String url = "http://10.0.0.131:8080/Workshop7-1/rs/customers/updateCustomer";
         //setup the request queue
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -208,8 +201,8 @@ public class AgentDetail extends AppCompatActivity {
 
     }
 
-    private void deleteAgent(int agentId) {
-        String url = "http://10.0.0.131:8080/Workshop7-1/rs/agent/deleteagent/" + agentId;
+    private void deleteCustomer(int customerId) {
+        String url = "http://10.0.0.131:8080/Workshop7-1/rs/customers/deleteCustomer/" + customerId;
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         // Enter the correct url for your api service site
