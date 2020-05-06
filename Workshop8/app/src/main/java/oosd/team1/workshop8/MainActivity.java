@@ -55,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.btnCustomers:
                 // do something
-                Toast.makeText(this, "Load Customers", Toast.LENGTH_SHORT).show();
+                openActivity(CustomerActivity.class);
+                //Toast.makeText(this, "Load Customers", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btnSuppliers:
                 // do something
@@ -65,8 +66,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 // do something
                 Toast.makeText(this, "Load Extras", Toast.LENGTH_SHORT).show();
                 break;
-
-
         }
     }
 
