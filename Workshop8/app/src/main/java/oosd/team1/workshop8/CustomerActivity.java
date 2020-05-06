@@ -105,7 +105,7 @@ public class CustomerActivity extends AppCompatActivity {
                                         json.getString("custCity"),
                                         json.getString("custHomePhone"),
                                         //json.optString("agtMiddleInitial", ""),
-                                        json.getString("custEmail"));
+                                        json.getString("custEmail").trim());
                                 customers.add(customer);
 
                             } catch (JSONException e) {
