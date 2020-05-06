@@ -16,7 +16,7 @@ Added items to allow REST server usage
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AgentDetail"></activity>
+        <activity android:name=".AgentDetail" android:windowSoftInputMode="adjustResize"></activity>
         <activity android:name=".ExtraActivity"></activity>
         <activity android:name=".AgentActivity" />
         <activity android:name=".MainActivity">

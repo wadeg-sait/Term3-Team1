@@ -2,6 +2,7 @@
 Created by Wade Grimm
 
 -->
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,7 +13,7 @@ Created by Wade Grimm
     <LinearLayout
         android:id="@+id/LinearLayout"
         android:layout_width="0dp"
-        android:layout_height="500dp"
+        android:layout_height="300dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -29,11 +30,11 @@ Created by Wade Grimm
             <TextView
                 android:id="@+id/textView"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginStart="20dp"
                 android:labelFor="@id/etAgentId"
                 android:text="@string/AgentID"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/etAgentId"
@@ -44,7 +45,8 @@ Created by Wade Grimm
                 android:focusable="false"
                 android:focusableInTouchMode="false"
                 android:hint="@string/AgentID"
-                android:inputType="none" />
+                android:inputType="none"
+                android:textSize="10sp" />
 
         </LinearLayout>
 
@@ -59,14 +61,15 @@ Created by Wade Grimm
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/AgentPosition"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/etAgtPosition"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/AgentPosition"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textSize="10sp" />
 
         </LinearLayout>
 
@@ -81,14 +84,15 @@ Created by Wade Grimm
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/AgentFirstName"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/etAgtFirstName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/AgentFirstName"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textSize="10sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -102,14 +106,15 @@ Created by Wade Grimm
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/AgentMiddleInitial"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/etAgtMiddleInitial"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/AgentMiddleInitial"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textSize="10sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -123,14 +128,15 @@ Created by Wade Grimm
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/AgentLastName"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/etAgtLastName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/AgentLastName"
-                android:inputType="text" />
+                android:inputType="text"
+                android:textSize="10sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -144,14 +150,15 @@ Created by Wade Grimm
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/BusPhone"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/etAgtBusPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/BusPhone"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:textSize="10sp" />
 
         </LinearLayout>
 
@@ -166,14 +173,15 @@ Created by Wade Grimm
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/AgentEmail"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/etAgtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/AgentEmail"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:textSize="10sp" />
 
         </LinearLayout>
 
@@ -188,14 +196,15 @@ Created by Wade Grimm
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="@string/AgencyID"
-                android:textSize="16sp" />
+                android:textSize="12sp" />
 
             <EditText
                 android:id="@+id/etAgencyId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/AgencyID"
-                android:inputType="number" />
+                android:inputType="number"
+                android:textSize="10sp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -218,7 +227,8 @@ Created by Wade Grimm
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            android:text="@string/btnSave" />
+            android:text="@string/btnSave"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btnCancel"
@@ -226,7 +236,8 @@ Created by Wade Grimm
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
-            android:text="@string/btnCancel" />
+            android:text="@string/btnCancel"
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/btnDelete"
@@ -235,7 +246,8 @@ Created by Wade Grimm
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp"
             android:layout_weight="1"
-            android:text="@string/delete" />
+            android:text="@string/delete"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
