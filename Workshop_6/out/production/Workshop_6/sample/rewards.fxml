@@ -7,6 +7,13 @@
    <children>
       <Label fx:id="rewards" layoutX="33.0" layoutY="24.0" text="Rewards" />
       <Button fx:id="btnCancel" cancelButton="true" layoutX="530.0" layoutY="353.0" mnemonicParsing="false" onAction="#clickedCancel" text="Cancel" />
-      <ListView layoutX="24.0" layoutY="85.0" prefHeight="235.0" prefWidth="560.0" />
+      <TableView layoutX="14.0" layoutY="56.0" prefHeight="200.0" prefWidth="572.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Customer" />
+          <TableColumn prefWidth="150.39999389648438" text="Reward Name" />
+            <TableColumn minWidth="0.0" prefWidth="232.80001831054688" text="Description" />
+            <TableColumn minWidth="0.0" prefWidth="112.0" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>

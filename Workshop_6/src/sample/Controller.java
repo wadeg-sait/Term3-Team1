@@ -68,7 +68,7 @@ public class Controller {
         window.setScene(scene);
 
         @FXML
-        void clickedSuppliers(ActionEvent event) throws IOException {
+        void clickedRewards(ActionEvent event) throws IOException {
             Parent stage = FXMLLoader.load(getClass().getResource("rewards.fxml"));
             Scene scene = new Scene((stage));
 
