@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-Base skeleton created by Wade Grimm
-Added items to allow REST server usage
--->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="oosd.team1.workshop8">
 
@@ -16,9 +12,21 @@ Added items to allow REST server usage
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AgentDetail"></activity>
-        <activity android:name=".ExtraActivity"></activity>
-        <activity android:name=".AgentActivity" />
+        <activity android:name=".activity_bookingedit" android:parentActivityName=".activity_bookingslist" android:windowSoftInputMode="adjustResize"></activity>
+        <activity
+            android:name=".activity_addBooking"
+            android:parentActivityName=".activity_bookingslist"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".activity_bookingslist"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AgentDetail"
+            android:parentActivityName=".AgentActivity" />
+        <activity android:name=".ExtraActivity" />
+        <activity
+            android:name=".AgentActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
