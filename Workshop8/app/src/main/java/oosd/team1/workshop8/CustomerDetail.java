@@ -70,27 +70,18 @@ public class CustomerDetail extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
-
-            }
-        });
-
-
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
                 if (validateFields()) {
                     JSONObject json = new JSONObject();
                     try {
                         if (mode.equals("update")) {
-                            json.put("CustomerId", Integer.parseInt(etCustomerId.getText().toString()));
+                            json.put("customerId", Integer.parseInt(etCustomerId.getText().toString()));
                         }
-                        json.put("CustFirstName", etCustFirstName.getText().toString());
-                        json.put("CustLastName", etCustLastName.getText().toString());
-                        json.put("CustAddress", etCustAddress.getText().toString());
-                        json.put("CustHomePhone", etCustHomePhone.getText().toString());
-                        json.put("CustCity", etCustCity.getText().toString());
-                        json.put("CustEmail", etCustEmail.getText().toString());
+                        json.put("custFirstName", etCustFirstName.getText().toString());
+                        json.put("custLastName", etCustLastName.getText().toString());
+                        json.put("custAddress", etCustAddress.getText().toString());
+                        json.put("custHomePhone", etCustHomePhone.getText().toString());
+                        json.put("custCity", etCustCity.getText().toString());
+                        json.put("custEmail", etCustEmail.getText().toString());
                         //String data = json.toJson(obj);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -160,7 +151,7 @@ public class CustomerDetail extends AppCompatActivity {
 
         // Enter the correct url for your api service site
         System.out.println(data);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, data,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, data,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
@@ -184,7 +175,7 @@ public class CustomerDetail extends AppCompatActivity {
 
         // Enter the correct url for your api service site
         System.out.println(data);
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, data,
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, data,
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {

@@ -24,7 +24,7 @@ Created by Muhammad Kalil
             android:id="@+id/textView"
             android:layout_width="385dp"
             android:layout_height="wrap_content"
-            android:text="Customer Details"
+            android:text="Customers"
             android:textSize="24sp" />
 
         <ListView

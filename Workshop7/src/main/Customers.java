@@ -15,7 +15,7 @@ public class Customers {
 	private String CustHomePhone;
 	private String CustBusPhone;
 	private String CustEmail;
-	private int AgentId;
+	//private int AgentId;
 	
 	public int getCustomerId() {
 		return CustomerId;
@@ -83,18 +83,18 @@ public class Customers {
 	public void setCustEmail(String custEmail) {
 		CustEmail = custEmail;
 	}
-	public int getAgentId() {
-		return AgentId;
-	}
-	public void setAgentId(int agentId) {
-		AgentId = agentId;
-	}
+//	public int getAgentId() {
+//		return AgentId;
+//	}
+//	public void setAgentId(int agentId) {
+//		AgentId = agentId;
+//	}
 	@Override
 	public String toString() {
 		return "Customers [CustomerId=" + CustomerId + ", CustFirstName=" + CustFirstName + ", CustLastName="
 				+ CustLastName + ", CustAddress=" + CustAddress + ", CustCity=" + CustCity + ", CustProv=" + CustProv
 				+ ", CustPostal=" + CustPostal + ", CustCountry=" + CustCountry + ", CustHomePhone=" + CustHomePhone
-				+ ", CustBusPhone=" + CustBusPhone + ", CustEmail=" + CustEmail + ", AgentId=" + AgentId + "]";
+				+ ", CustBusPhone=" + CustBusPhone + ", CustEmail=" + CustEmail + "]";
 	}
 	
 	

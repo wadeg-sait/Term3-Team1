@@ -33,7 +33,7 @@ public class CustomerRestService {
 	
 	
 	BookingDBConnection bookdb= new BookingDBConnection();
-	EntityManagerFactory factory =Persistence.createEntityManagerFactory("Workshop7");
+	//EntityManagerFactory factory =Persistence.createEntityManagerFactory("Workshop7");
 	
 	@GET
 	@Path("/getCustomers")
@@ -59,7 +59,8 @@ public class CustomerRestService {
     @Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String postSomething(String jsonString) {
-		
+		EntityManagerFactory factory 
+		= Persistence.createEntityManagerFactory("Workshop7");
 		EntityManager em = factory.createEntityManager();
 		Gson gson = new Gson();
 		Customer customer = gson.fromJson(jsonString, Customer.class);
@@ -76,7 +77,9 @@ public class CustomerRestService {
 	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public String updateBooking(String jsonString)
-	{  
+	{
+		EntityManagerFactory factory 
+		= Persistence.createEntityManagerFactory("Workshop7");
 		EntityManager em = factory.createEntityManager();
 		Gson gson = new Gson();
 		//Type type = new TypeToken<Agent>() {}.getType();
