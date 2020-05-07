@@ -155,7 +155,7 @@ public class CustomerDetail extends AppCompatActivity {
 //    }
 
     private void addCustomer(JSONObject data) {
-        String url = "http://10.0.0.131:8080/Workshop7-1/rs/customers/postCustomer";
+        String url = "http://192.168.0.23:8080/Workshop7-1/rs/customers/postCustomer";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         // Enter the correct url for your api service site
@@ -178,7 +178,7 @@ public class CustomerDetail extends AppCompatActivity {
 
 
     private void updateCustomer(JSONObject data) {
-        String url = "http://10.0.0.131:8080/Workshop7-1/rs/customers/updateCustomer";
+        String url = "http://192.168.0.23:8080/Workshop7-1/rs/customers/updateCustomer";
         //setup the request queue
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
@@ -202,7 +202,7 @@ public class CustomerDetail extends AppCompatActivity {
     }
 
     private void deleteCustomer(int customerId) {
-        String url = "http://10.0.0.131:8080/Workshop7-1/rs/customers/deleteCustomer/" + customerId;
+        String url = "http://192.168.0.23:8080/Workshop7-1/rs/customers/deleteCustomer/" + customerId;
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         // Enter the correct url for your api service site

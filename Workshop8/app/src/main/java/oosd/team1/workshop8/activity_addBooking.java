@@ -7,6 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.nio.BufferUnderflowException;
 
@@ -28,6 +40,11 @@ public class activity_addBooking extends AppCompatActivity {
 
          addBookingSave=(Button)findViewById(R.id.btnSaveAddBooking);
          cancelAddBooking=(Button)findViewById(R.id.btnCancelBooking);
+         Intent intent= getIntent();
+         final int bk= intent.getIntExtra(activity_bookingslist.EXTRA_NUMBER,0);
+         bookingId.setText(String.valueOf(bk));
+         System.out.println(bk+"zoha");
+
 
 
          cancelAddBooking.setOnClickListener(new View.OnClickListener() {
@@ -42,11 +59,69 @@ public class activity_addBooking extends AppCompatActivity {
              @Override
              public void onClick(View v) {
 
+                 if (packageId.getText().toString().matches("" )|| bookingNo.getText().toString().matches("" )|| tripTypeId.getText().toString().matches("" )
+                         ||travelerCount.getText().toString().matches("" )||customerId.getText().toString().matches("" )){
+                     Toast.makeText(getApplicationContext(), "All fields are required as an input", Toast.LENGTH_LONG).show();
+                     return;
+                 }
+
+                 if (Integer.parseInt(customerId.getText().toString()) <=0 || Integer.parseInt(packageId.getText().toString())<=0){
+                     Toast.makeText(getApplicationContext(), "Customer ID and Package ID must be greater than 0", Toast.LENGTH_LONG).show();
+                     return;
+                 }
+
+                 if (tripTypeId.getText().length()>1){
+                     Toast.makeText(getApplicationContext(), "Trip Type Id  must be a single character", Toast.LENGTH_LONG).show();
+                     return;
+                 }
+
+                 JSONObject json = new JSONObject();
+                 try {
+
+                     json.put("bookingId",bk);
+                     json.put( "bookingNo", bookingNo.getText());
+                     json.put("travelerCount", Double.parseDouble(travelerCount.getText().toString()));
+                     json.put("customerId",Integer.parseInt(customerId.getText().toString()));
+                     json.put("tripTypeId",tripTypeId.getText());
+                     json.put("packageId", Integer.parseInt(packageId.getText().toString()));
+                     System.out.println(json);
+                     addAgent(json);
+                     Toast.makeText(getApplicationContext(), "BooKing added.", Toast.LENGTH_SHORT).show();
+                     onBackPressed();
+                     cancelbookingAdd();
+                 } catch (JSONException e) {
+                     e.printStackTrace();
+                 }
+
+
+
              }
          });
 
 
 
+    }
+
+    private void addAgent(JSONObject data) {
+        String url = "http://192.168.0.23:8080/Workshop7-1/rs/bookings/postBooking";
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+        // Enter the correct url for your api service site
+        System.out.println(data);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url, data,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        //resultTextView.setText("String Response : "+ response.toString());
+                        //Toast.makeText(getApplicationContext(),"Agent added",Toast.LENGTH_LONG).show();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println(error.toString());
+            }
+        });
+        requestQueue.add(jsonObjectRequest);
     }
 
     public void cancelbookingAdd(){

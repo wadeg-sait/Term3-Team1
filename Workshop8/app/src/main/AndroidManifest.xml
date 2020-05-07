@@ -24,6 +24,7 @@
             android:name=".AgentDetail"
             android:parentActivityName=".AgentActivity" />
         <activity android:name=".ExtraActivity" />
+
         <activity
             android:name=".AgentActivity"
             android:parentActivityName=".MainActivity" />
