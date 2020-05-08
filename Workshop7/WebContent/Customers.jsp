@@ -1,3 +1,4 @@
+Muhammad Khalil
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -48,18 +49,16 @@ body {
     
   </div>
 </nav>
-<div  class="row collapse" id="customer" data-toggle="collapse" class="container" style="background-color:lightyellow;border:solid;margin-top:50px;font-size: 18px;font-style:italic;font-weight: bold;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+    
+<div  class="row collapse" id="customers" data-toggle="collapse" class="container" style="background-color:lightyellow;border:solid;margin-top:50px;font-size: 18px;font-style:italic;font-weight: bold;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
         <div  >
           <div class="col" style="margin-left:200px">
             <h3> Travel World Registration Form</h3>
           <form  class="form-inline" style="font-size: 18px;font-style:italic;font-weight: bold;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;"> 
-                    <div class="col-md-4 mb-3 form-group">
-                        <label for="bkid" >Booking ID</label>
-                        <input type="text" class="form-control " id="bkid" required>
-                    </div>
+               
                     <div class="col-md-4 mb-3">
                       <label for="csdt">Customer ID</label>
-                      <input type="text" class="form-control" id="csdt">
+                      <input type="text" class="form-control" id="csid">
                     </div>
                     <div class="col-md-4 mb-3">
                       <label for="cfn">First Name</label>
@@ -81,6 +80,10 @@ body {
                       <label for="chp">Home Phone</label>
                       <input type="text" class="form-control" id="chp" required>
                     </div>
+                    <div class="col-md-4 mb-3">
+                      <label for="chp">Email</label>
+                      <input type="text" class="form-control" id="cem" required>
+                    </div>
                      <button class="btn btn-primary badge-pill" type="submit" style="margin-left:40px" id="submit">Submit</button>
                     <button class="btn btn-primary badge-pill" type="reset" style="margin-left:10px" id="cancel">Cancel</button>
                   </form>
@@ -88,7 +91,25 @@ body {
                 </div>
         </div>
     </div>
+	
+      
+      
 <h3>Customer Details</h3>
+
+<div  id="hideshow">
+
+      <div  class="form-row m-4" >
+
+       
+        <div class="col-sm-12 col-md-4 col-lg-4">
+           
+        <button type="button" class="btn btn-primary btn-block h-75 m-4  font-weight-bold" id="addButton">Add Customers</button>
+
+        </div>
+
+    
+        
+      </div>
     <table class="table table-hover table-bordered  text-center font-weight-bold" id="customerData">
       <thead class="thead-dark">
         <tr>
@@ -99,8 +120,8 @@ body {
           <th scope="col">City</th>
           <th scope="col">Home Phone</th>
           <th scope="col">Email</th>
-          <th scope="col">Edit Booking</th>
-          <th scope="col">Delete Booking</th>
+          <th scope="col">Edit Customers</th>
+          <th scope="col">Delete Customers</th>
         
        
         </tr>
