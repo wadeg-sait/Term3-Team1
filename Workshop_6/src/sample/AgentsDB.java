@@ -1,7 +1,7 @@
 package sample;
 
 public class AgentsDB {
-    // Private fields for Agent Class
+
     private  int AgentId;
     private String AgentFirstName;
     private String AgentMiddleName;
