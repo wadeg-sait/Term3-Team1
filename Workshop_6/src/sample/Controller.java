@@ -64,17 +64,8 @@ public class Controller {
         Parent stage = FXMLLoader.load(getClass().getResource("suppliers.fxml"));
         Scene scene = new Scene((stage));
 
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
         window.setScene(scene);
-
-        @FXML
-        void clickedRewards(ActionEvent event) throws IOException {
-            Parent stage = FXMLLoader.load(getClass().getResource("rewards.fxml"));
-            Scene scene = new Scene((stage));
-
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-            window.setScene(scene);
-
     }
 
 }

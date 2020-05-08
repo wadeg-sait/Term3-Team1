@@ -10,8 +10,8 @@
     <orderEntry type="library" exported="" name="javafx11" level="application" />
     <orderEntry type="library" name="java" level="project" />
     <orderEntry type="library" name="java1" level="project" />
-    <orderEntry type="library" name="lib" level="application" />
     <orderEntry type="library" exported="" name="mysql-connector-java-8.0.20" level="application" />
     <orderEntry type="library" name="Connector J 8" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

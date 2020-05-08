@@ -1058,7 +1058,7 @@ public class AgencyController {
 
 
 
-    private void getSelectedAgentDetails(Integer index) {
+       private void getSelectedAgentDetails(Integer index) {
         Integer agencySelectedID= (Integer)  comboAgency.getSelectionModel().getSelectedItem();
 
 

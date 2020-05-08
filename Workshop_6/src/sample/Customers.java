@@ -1,25 +1,74 @@
 package sample;
-/*
-Base skeleton created by Wade Grimm
- */
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 public class Customers {
 
-    @FXML
-    void clickedCancel(ActionEvent event) throws IOException {
-        Parent stage = FXMLLoader.load(getClass().getResource("main.fxml"));
-        Scene scene = new Scene((stage));
+    private int customerId;
+    private String custFirstName;
+    private String custLastName;
+    private String custAddress;
+    private String custCity;
+    private String custCountry;
+    private String custEmail;
 
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(scene);
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getCustAddress() {
+        return custAddress;
+    }
+
+    public void setCustAddress(String custAddress) {
+        this.custAddress = custAddress;
+    }
+
+    public String getCustCity() {
+        return custCity;
+    }
+
+    public void setCustCity(String custCity) {
+        this.custCity = custCity;
+    }
+
+    public String getCustCountry() {
+        return custCountry;
+    }
+
+    public void setCustCountry(String custCountry) {
+        this.custCountry = custCountry;
+    }
+
+    public String getCustEmail() {
+        return custEmail;
+    }
+
+    public void setCustEmail(String custEmail) {
+        this.custEmail = custEmail;
+    }
+
+    public String getCustFirstName() {
+        return custFirstName;
+    }
+
+    public void setCustFirstName(String custFirstName) {
+        this.custFirstName = custFirstName;
+    }
+
+    public String getCustLastName() {
+        return custLastName;
+    }
+
+    public void setCustLastName(String custLastName) {
+        this.custLastName = custLastName;
+    }
+
+    @Override
+    public String toString() {
+        return  Integer.toString(customerId);
     }
 }
