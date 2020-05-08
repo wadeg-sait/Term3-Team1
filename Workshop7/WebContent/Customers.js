@@ -6,6 +6,17 @@ const addBtn = document.querySelector('#addButton');
 const form = document.querySelector('#customers');
 const submit = document.querySelector('#submit');
 const cancel = document.querySelector('#cancel');
+const table = document.querySelector('#customerData');
+const hideShow = document.querySelector('#hideshow');
+const formTitle = document.querySelector('#formTitle');
+const inpCustomerId = document.querySelector('#csid');
+const inpCustFirstName = document.querySelector('#cfn');
+const inpCustLastName = document.querySelector('#cln');
+const inpCustAddress = document.querySelector('#cad');
+const inpCustCity = document.querySelector('#cct');
+const inpCustHomePhone = document.querySelector('#chp');
+const inpCustEmail = document.querySelector('#cem');
+const error = document.querySelector('#error');
 
 window.addEventListener('load', function() {
 	getData();
@@ -57,7 +68,18 @@ function tableData(result) {
 		editCell.appendChild(edit);
 
 		edit.addEventListener('click', function() {
-			postPut(this);
+			error.innerText = '';
+			//form.classList.remove('collapse');
+			hideShow.classList.add('collapse');
+			inpCustomerId.value = row.customerId;
+			inpCustFirstName.value = row.custFirstName;
+			inpCustLastName.value = row.custLastName;
+			inpCustAddress.value = row.custAddress;
+			inpCustCity.value = row.custCity;
+			inpCustHomePhone.value = row.custHomePhone;
+			inpCustEmail.value = row.custEmai;;
+			formTitle.innerText = `EDITING CUSTOMERS FOR CUSTOMER ID ${row.customerId}`;
+			
 		});
 
 		const del = document.createElement('button');
@@ -68,7 +90,7 @@ function tableData(result) {
 		const delCell = document.createElement('td');
 		delCell.appendChild(del);
 		del.addEventListener('click', function() {
-			deleteBookings(row.bookingId);
+			deleteCustomers(row.customerId);
 			search.value = '';
 		});
 
@@ -100,9 +122,100 @@ function postPut(btn) {
 	}
 }
 
-cancel.addEventListener('click', function() {
-	console.log('add code to clear form and colapse form');
+function formCollpase() {
+	form.classList.add('collapse');
+}
+
+addBtn.addEventListener('click', function() {
+	form.classList.remove('collapse');
+	hideShow.classList.add('collapse');
+	inpCustomerId.value = Math.max(data[data.length - 1].customerId + 1, data[0].customerId + 1);
+	formTitle.innerText = 'ADD NEW CUSTOMER';
 });
+
+submit.addEventListener('click', () => {
+	
+	if (
+			inpCustomerId.value == '' ||
+			inpCustFirstName.value == '' ||
+			inpCustLastName.value == '' ||
+			inpCustAddress.value == '' ||
+			inpCustCity.value == '' ||
+			inpCustHomePhone.value == '' ||
+			inpCustEmail.value == ''
+		) {
+			error.innerText = 'All fields required as an input';
+			return;
+		}
+
+		
+		
+		console.log("muhammad");
+	formDataCapture();
+	formClear();
+	hideShow.classList.remove('collapse');
+	formCollpase();
+	clearTableRow();
+	getData();
+	error.innerText = '';
+});
+
+cancel.addEventListener('click', function() {
+	formClear();
+	formCollpase();
+	hideShow.classList.remove('collapse');
+});
+
+
+function formDataCapture() {
+	const formdata = {};
+	formdata.customerId = parseInt(inpCustomerId.value);
+	formdata.custFirstName = inpCustFirstName.value;
+	formdata.custLastName = inpCustLastName.value;
+	formdata.custAddress = inpCustAddress.value;
+	formdata.custCity = inpCustCity.value;
+	formdata.custHomePhone = inpCustHomePhone.value;
+	formdata.custEmail = inpCustEmail.value;
+	console.log(formdata);
+	if (formTitle.innerText == 'ADD NEW CUSTOMER') {
+		addCustomers(formdata);
+	} else {
+		updateCustomers(formdata);
+	}
+}
+
+function addCustomers(addData) {
+	const xhr = new XMLHttpRequest();
+	const params = addData;
+	console.log(' i ma here for test');
+	console.log(params);
+	xhr.open('POST', 'http://localhost:8080/Workshop7-1/rs/customers/postCustomers');
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify(params));
+	xhr.onload = () => {
+		getData();
+		clearTableRow();
+		tableData(data.reverse());
+		console.log(xhr.responseText);
+	};
+}
+
+
+function updateCustomers(updateData) {
+	const xhr = new XMLHttpRequest();
+	const params = updateData;
+	console.log(' i ma here for update');
+	console.log(params);
+	xhr.open('PUT', 'http://localhost:8080/Workshop7-1/rs/customers/updateCustomers');
+	xhr.setRequestHeader('Content-Type', 'application/json');
+	xhr.send(JSON.stringify(params));
+	xhr.onload = () => {
+		getData();
+		clearTableRow();
+		tableData(data.reverse());
+		console.log(xhr.responseText);
+	};
+}
 
 function deleteCustomers(num) {
 	const delReq = new XMLHttpRequest();
@@ -113,7 +226,7 @@ function deleteCustomers(num) {
 	delReq.addEventListener('error', () => {
 		console.log('ERROR!!!!!!');
 	});
-	delReq.open('DELETE', 'http://localhost:8080/TravelExpert/webapi/customers/deleteCustomer/' + num);
+	delReq.open('DELETE', 'http://localhost:8080/Workshop7-1/customers/deleteCustomer/' + num);
 	delReq.send();
 }
 
@@ -154,4 +267,14 @@ function liveSearch() {
 	} else {
 		tableData(data);
 	}
+}
+
+function formClear() {
+	inpCustomerId.value = '';
+	inpCustFirstName.value = '';
+	inpCustLastName.value = '';
+	inpCustAddress.value = '';
+	inpCustCity.value = '';
+	inpCustHomePhone.value = '';
+	inpCustEmail.value = '';
 }
