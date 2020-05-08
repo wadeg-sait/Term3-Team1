@@ -1,3 +1,5 @@
+// zoha ahmed code	
+
 console.log("test");
 
 let data = [];
@@ -23,6 +25,8 @@ window.addEventListener('load', function() {
 	getData();
 });
 
+
+// getting booking from api
 function getData() {
 	const getReq = new XMLHttpRequest();
 
@@ -41,6 +45,8 @@ function getData() {
 	getReq.send();
 }
 
+
+// populating data on tables
 function tableData(result) {
 	const table = document.querySelector('#bookingData');
 
@@ -184,6 +190,8 @@ function formDataCapture() {
 	}
 }
 
+
+// adding booking using API
 function addBookings(addData) {
 	const xhr = new XMLHttpRequest();
 	const params = addData;
@@ -199,7 +207,7 @@ function addBookings(addData) {
 		console.log(xhr.responseText);
 	};
 }
-
+// updating booking using API
 function updateBookings(updateData) {
 	const xhr = new XMLHttpRequest();
 	const params = updateData;
@@ -235,7 +243,7 @@ function postPut(btn) {
 		console.log('Execute Update');
 	}
 }
-
+// deleting booking from API
 function deleteBookings(num) {
 	const delReq = new XMLHttpRequest();
 	delReq.addEventListener('load', function() {
