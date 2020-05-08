@@ -1,5 +1,5 @@
 package sample;
-
+// Zoha Ahmed Code//
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
@@ -22,6 +22,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+
+// zoha Ahmed
 public class AgencyController {
 
     @FXML
@@ -296,7 +298,7 @@ public class AgencyController {
 
 
 
-
+// inserting agents in to tables
         try{
             Connection conn  = MyDBConnection.getConnectionString();
 
@@ -389,6 +391,7 @@ public class AgencyController {
         comboAgency.setDisable(false);
 
 
+// updating agents into tables
 
         try{
             Connection conn  = MyDBConnection.getConnectionString();
@@ -574,7 +577,7 @@ public class AgencyController {
         try{
             Connection conn  = MyDBConnection.getConnectionString();
 
-
+// adding agencies
             String query = "INSERT  into agencies (AgncyAddress,AgncyCity,AgncyProv,AgncyPostal,AgncyCountry,AgncyPhone,AgncyFax)"+
                     "values(?,?,?,?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(query);
@@ -654,7 +657,7 @@ public class AgencyController {
             return;
         }
 
-
+// updating agency
         try{
             Connection conn  = MyDBConnection.getConnectionString();
             String query = "UPDATE agencies SET AgncyAddress=?," +
@@ -902,6 +905,8 @@ public class AgencyController {
     }
 
 
+// initilizing controller
+
 
     @FXML
     void initialize() {
@@ -990,7 +995,7 @@ public class AgencyController {
 
 
     }
-
+//  getting agency details
     private void getAgencyDetails() {
         Integer agencySelectedID= (Integer) comboAgencyID.getSelectionModel().getSelectedItem();
 
@@ -1021,7 +1026,7 @@ public class AgencyController {
 
 
     }
-
+// getting agents list
     private void getAgentsList() {
         Integer agencySelectedID= (Integer) comboAgency.getSelectionModel().getSelectedItem();
         agentList.removeAll(agentList);
@@ -1057,7 +1062,7 @@ public class AgencyController {
 
 
 
-
+// getting  selected agents
     private void getSelectedAgentDetails(Integer index) {
         Integer agencySelectedID= (Integer)  comboAgency.getSelectionModel().getSelectedItem();
 

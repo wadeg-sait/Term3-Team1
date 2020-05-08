@@ -1,6 +1,6 @@
 package main;
 
-
+//  zoha Ahmed code
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -29,7 +29,7 @@ import com.google.gson.reflect.TypeToken;
 import model.Agent;
 import model.Booking;
 
-
+// API for all bookings
 @Path("/bookings")
 public class BookingsRestService {
 	
@@ -46,7 +46,7 @@ public class BookingsRestService {
 		return bookdb.getBookings();
 
 	}
-	
+// API for booking by id 	
 	@GET
 	@Path("/getbooking/{ id }")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -54,7 +54,7 @@ public class BookingsRestService {
 	{
 		return bookdb.getBooking(id);	
 	}
-	
+// API for adding booking	
 	
 	@POST
 	@Path("/postBooking")
@@ -72,6 +72,8 @@ public class BookingsRestService {
 	 
         return "Booking has been posted";	
 	}
+	
+	//API for updating bookings
 
 	@PUT
 	@Path("/updateBooking")
@@ -90,6 +92,8 @@ public class BookingsRestService {
 		return "Booking has been Updated";
 	}
 
+	
+	//Deleting API bookings
 	
 	@DELETE 
 	@Path("/deleteBooking/{id}")

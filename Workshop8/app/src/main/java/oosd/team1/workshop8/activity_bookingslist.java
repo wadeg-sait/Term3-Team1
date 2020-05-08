@@ -1,5 +1,5 @@
 package oosd.team1.workshop8;
-
+// zoha ahmed code
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -44,12 +44,12 @@ public class activity_bookingslist extends AppCompatActivity {
 
         btnAddBooking= (Button)findViewById(R.id.btnAddBookings);
         lstBookings=(ListView)findViewById(R.id.lstBookings);
-
+// loading booking
         loadBookingsData();
         System.out.println("Zoha");
         
 
-
+// adding booking
         btnAddBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +65,6 @@ public class activity_bookingslist extends AppCompatActivity {
             }
 
         });
-        
 
         lstBookings.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -83,7 +82,7 @@ public class activity_bookingslist extends AppCompatActivity {
     }
 
 
-
+// loading booking data
 
     private void loadBookingsData() {
         String url = "http://192.168.0.23:8080/Workshop7-1/rs/bookings/getbookings";

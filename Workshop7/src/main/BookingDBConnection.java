@@ -1,3 +1,6 @@
+
+/* Zoha Ahmed Code*/
+
 package main;
 
 
@@ -8,7 +11,7 @@ import java.util.*;
 import model.Customer;
 
 
-
+/* data base connection class using jdbc**/
 
 public class BookingDBConnection {
 
@@ -35,7 +38,7 @@ Connection con = null;
 		}
 			
 	}
-	
+	/** querry for all bookings**/
 	public List<Bookings> getBookings(){
 		
 		List<Bookings> bookingslist = new ArrayList<Bookings>();
@@ -70,6 +73,8 @@ Connection con = null;
 		 return bookingslist;
 		
 }
+	
+	/** getting booking by id**/
 public Bookings getBooking(int id){
 		
 		
@@ -105,7 +110,7 @@ public Bookings getBooking(int id){
 	
 		
 	}
-
+/** deleting booking**/
 	public void deleteBooking(int id)
 	{
 		String sql= "delete from bookings where BookingId=?";
@@ -126,7 +131,7 @@ public Bookings getBooking(int id){
 			 
 		 }
 	}
-	
+	// adding booking
 	public void addBooking(Bookings b)
 	{
 		String sql= "insert into  bookings values (?,?,?,?,?,?,?)";
@@ -174,7 +179,7 @@ public Bookings getBooking(int id){
 			 
 		 }
 	}
-		
+		// adding booking
 	public void updateBooking(Bookings b)
 	{
 		String sql= "update bookings set BookingDate=?, BookingNo=?, TravelerCount=?, CustomerId=?, TripTypeId=?, PackageId=? where BookingId=?";

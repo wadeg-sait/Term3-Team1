@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
-
+<!--  Zoha Ahmed Code  -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -29,6 +29,7 @@ body {
 
 
 <body>
+
 
 
 <!-- NavBar Starts -->
@@ -59,6 +60,7 @@ body {
 <!-- NavBarEnds -->
 
 
+<!-- Form Starts -->
 <div class="h1 text-uppercase text-dark text-center"> Travel Experts- REST API Bookings</div>
       
       <div class="jumbotron collapse bg-secondary text-white" id="booking">
@@ -144,6 +146,8 @@ body {
 
       <div class="col-12">
 
+
+<!-booking table-->
         
         <table class="table table-hover table-bordered  text-center font-weight-bold" id="bookingData">
     

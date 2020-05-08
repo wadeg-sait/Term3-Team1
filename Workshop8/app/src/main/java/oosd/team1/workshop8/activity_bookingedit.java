@@ -1,5 +1,5 @@
 package oosd.team1.workshop8;
-
+//  zoha ahmed code
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -77,7 +77,7 @@ public class activity_bookingedit extends AppCompatActivity {
 
             }
         });
-
+// editing booking
         saveEditBooking.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -139,7 +139,7 @@ public class activity_bookingedit extends AppCompatActivity {
         });
 
     }
-
+// deleteing booking
     private void  BookingDelete(int bookingId) {
         String url = "http://192.168.0.23:8080/Workshop7-1/rs/bookings/deleteBooking/" + bookingId;
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
