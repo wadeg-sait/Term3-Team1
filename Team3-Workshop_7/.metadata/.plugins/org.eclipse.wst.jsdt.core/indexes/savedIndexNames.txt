@@ -1,8 +1,0 @@
-INDEX VERSION 1.3+C:\Users\835909\Documents\GitHub\Term3-Team1\Team3-Workshop_7\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-519849102.index
-3990444435.index
-2792073638.index
-2037763593.index
-2287987253.index
-2508400833.index
-1876560607.index
