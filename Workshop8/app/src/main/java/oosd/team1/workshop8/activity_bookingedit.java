@@ -141,7 +141,7 @@ public class activity_bookingedit extends AppCompatActivity {
     }
 
     private void  BookingDelete(int bookingId) {
-        String url = "http://192.168.0.23:8080/Workshop7-1/rs/bookings/deleteBooking/" + bookingId;
+        String url = "http://10.10.63.176:8080/Workshop7-1/rs/bookings/deleteBooking/" + bookingId;
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.DELETE, url, null,
                 new Response.Listener<JSONObject>() {
@@ -159,7 +159,7 @@ public class activity_bookingedit extends AppCompatActivity {
     }
 
     private void editBookingSave(JSONObject data) {
-        String url = "http://192.168.0.23:8080/Workshop7-1/rs/bookings/updateBooking";
+        String url = "http://10.10.63.176:8080/Workshop7-1/rs/bookings/updateBooking";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.PUT, url, data,
                 new Response.Listener<JSONObject>() {

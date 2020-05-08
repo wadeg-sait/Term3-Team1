@@ -17,6 +17,10 @@
             android:name=".activity_addBooking"
             android:parentActivityName=".activity_bookingslist"
             android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".CustomerActivity" android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name=".CustomerDetail" android:parentActivityName=".CustomerActivity">
+        </activity>
         <activity
             android:name=".activity_bookingslist"
             android:parentActivityName=".MainActivity" />
