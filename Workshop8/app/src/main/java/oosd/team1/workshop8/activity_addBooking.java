@@ -103,7 +103,7 @@ public class activity_addBooking extends AppCompatActivity {
     }
 // adding agent
     private void addAgent(JSONObject data) {
-        String url = "http://192.168.0.23:8080/Workshop7-1/rs/bookings/postBooking";
+        String url = "http://10.10.63.176:8080/Workshop7-1/rs/bookings/postBooking";
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
         // Enter the correct url for your api service site

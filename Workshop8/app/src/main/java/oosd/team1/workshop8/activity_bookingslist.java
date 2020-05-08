@@ -85,7 +85,7 @@ public class activity_bookingslist extends AppCompatActivity {
 // loading booking data
 
     private void loadBookingsData() {
-        String url = "http://192.168.0.23:8080/Workshop7-1/rs/bookings/getbookings";
+        String url = "http://10.10.63.176:8080/Workshop7-1/rs/bookings/getbookings";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest objectRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override

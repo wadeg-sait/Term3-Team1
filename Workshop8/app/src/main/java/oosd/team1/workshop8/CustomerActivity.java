@@ -85,7 +85,7 @@ public class CustomerActivity extends AppCompatActivity {
 
     private void loadCustomerData() {
 
-        String url = "http://192.168.0.23:8080/Workshop7-1/rs/customers/getCustomers";
+        String url = "http://10.10.63.176:8080/Workshop7-1/rs/customers/getCustomers";
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonArrayRequest objectRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
