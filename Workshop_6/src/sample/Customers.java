@@ -10,7 +10,6 @@ public class Customers {
     private String custCountry;
     private String custEmail;
 
-
     public int getCustomerId() {
         return customerId;
     }

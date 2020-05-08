@@ -10,11 +10,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
 
 public class CustomersController {
 
@@ -56,30 +59,52 @@ public class CustomersController {
 
     }
 
-
-    private void setComboCust() {
-        Integer custSelectedID = (Integer) comboCust.getSelectionModel().getSelectedItem();
+    private ArrayList<Integer> getCustomerList() {
+        ArrayList<Integer> lst= new ArrayList<>();
 
         try {
 
             Connection conn = MyDBConnection.getConnectionString();
-            String str = "SELECT * from customers where CustomerId =" + custSelectedID;
+            String str = "SELECT * from customers";
             ResultSet rset = MyDBConnection.getResults(str, conn);
             ResultSetMetaData rsmd = rset.getMetaData();
 
-            while (rset.next()) {
+            while(rset.next()) {
 
-                txtFirst.setText(rset.getString("CustFirstName"));
-                txtLast.setText(rset.getString("CustLastName"));
-                txtAddress.setText(rset.getString("CustAddressPhone"));
-                txtCity.setText(rset.getString("CustEmail"));
-                txtCountry.setText(rset.getString("CustCountry"));
-                txtEmail.setText(rset.getString("CustEmail"));
+                lst.add(rset.getInt("CustomerId"));
             }
             rset.close();
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex) {
             ex.printStackTrace();
         }
 
+        return lst;
+
     }
-}
+
+        private void getCustomer() {
+            Integer custSelectedID = (Integer) comboCust.getSelectionModel().getSelectedItem();
+
+            try {
+                Connection conn = MyDBConnection.getConnectionString();
+                String str = "SELECT * from customers where CustomerId =" + custSelectedID;
+                ResultSet rset = MyDBConnection.getResults(str, conn);
+                ResultSetMetaData rsmd = rset.getMetaData();
+
+                while (rset.next()) {
+
+                    txtFirst.setText(rset.getString("CustFirstName"));
+                    txtLast.setText(rset.getString("CustLastName"));
+                    txtAddress.setText(rset.getString("CustAddressPhone"));
+                    txtCity.setText(rset.getString("CustEmail"));
+                    txtCountry.setText(rset.getString("CustCountry"));
+                    txtEmail.setText(rset.getString("CustEmail"));
+                }
+                rset.close();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+
+        }
+    }
