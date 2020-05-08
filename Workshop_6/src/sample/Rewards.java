@@ -24,6 +24,10 @@ import javafx.scene.control.TableView;
 public class Rewards { String connectionURL = "jdbc:mysql://localhost:3306/travelexperts";
     Connection connection;
     Rewards reward;
+    private Object Rewards;
+
+    public Rewards(int rewardId, String rwdName) {
+    }
 }
 
     @FXML
